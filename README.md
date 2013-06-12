@@ -11,3 +11,8 @@ see file buildCedThumbnails.xml / buildCedTag.xml
 Remarks are welcomed
 http://www.waltercedric.com/
 http://www.cedricwalter.com/
+
+
+OPEN
+* Creation of manifest.xml in package is not done through the script but will be done later
+*
