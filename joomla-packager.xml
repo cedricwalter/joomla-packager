@@ -26,7 +26,7 @@
     </target>
 
     <target name="doComponents">
-        <foreach list="${itsComponents}" param="componentID" target="doComponent"/>
+        <foreach list="${itsComponents}" param="componentShortID" target="doComponent"/>
     </target>
     <target name="doPlugins">
         <foreach list="${itsContentPlugins}" param="pluginID" target="doPlugin">
@@ -105,6 +105,7 @@
     </target>
 
     <target name="doComponent">
+        <property name="componentID" value="com_${componentShortID}/"/>
 
         <property name="delivery.base" value="${delivery.dir}/${componentID}/"/>
         <property name="delivery.admin" value="${delivery.base}/administrator/components/${componentID}"/>
@@ -125,13 +126,15 @@
             <fileset dir="${base.admin}" includes="**/*.*"></fileset>
         </copy>
 
-        <foreach list="${itsModules}" param="moduleID" target="doComponentLanguages"/>
+        <!-- <foreach list="${itsModules}" param="moduleID" target="doComponentLanguages"/>-->
 
-        <move file="${delivery.admin}/${componentID}.xml" tofile="${delivery.base}/${componentID}.xml" overwrite="true"/>
+        <move file="${delivery.admin}/${componentShortID}.xml" tofile="${delivery.base}/${componentShortID}.xml" overwrite="true"/>
 
-        <echo message="packaging ${pluginID}"/>
+        <echo message="packaging ${componentID}"/>
         <zip destfile="${packages.dir}/${componentID}.zip" basedir="${delivery.dir}/${componentID}"/>
     </target>
+
+
     <target name="doComponentLanguages">
         <copy file="./administrator/language/${itsLanguages}/${itsLanguages}.${componentID}.ini"
               todir="${delivery.base}/administrator/language/${itsLanguages}" overwrite="true"/>
@@ -141,16 +144,17 @@
 
 
     <target name="doPlugin">
-        <echo message="preparing ${pluginID}"/>
+        <echo message="preparing plugin ${pluginID} of type ${type}"/>
         <copy todir="${delivery.dir}/plugins/${type}" overwrite="true">
             <fileset dir="./plugins/${type}/${pluginID}" includes="**/*.*"></fileset>
         </copy>
         <copy todir="${delivery.dir}/plugins/${type}/plg_${type}_${pluginID}" overwrite="true">
             <fileset dir="./media/plg_${type}_${pluginID}" includes="**/*.*"></fileset>
         </copy>
-        <echo message="packaging ${pluginID}"/>
+        <echo message="packaging plugin ${pluginID} of type ${type}"/>
         <zip destfile="${packages.dir}/plg_${type}_${pluginID}.zip" basedir="${delivery.dir}/plugins/${type}"/>
     </target>
+
 
     <target name="doModule">
         <echo message="preparing ${moduleID}"/>
