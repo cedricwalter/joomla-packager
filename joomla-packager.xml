@@ -115,15 +115,23 @@
 
         <echo message="preparing ${componentID}"/>
 
-        <!-- Media -->
-        <if>
-            <available file='./media/${componentID}' type='dir'/>
-            <then>
-                <copy todir="${delivery.base}/media/${componentID}" overwrite="true">
-                    <fileset dir="./media/${componentID}" includes="**/*.*"></fileset>
-                </copy>
-            </then>
-        </if>
+        <!-- Optional Languages -->
+        <phingcall target="copyAdminLanguages">
+            <property name="file" value="${componentID}.ini"/>
+            <property name="to" value="${delivery.base}/administrator/language/"/>
+        </phingcall>
+        <phingcall target="copyLanguages">
+            <property name="from" value="${componentID}.ini"/>
+            <property name="to" value="${delivery.base}/language/"/>
+        </phingcall>
+
+        <!-- Optional Media -->
+        <phingcall target="copyIfDirExist">
+            <property name="from" value="./media/${componentID}"/>
+            <property name="to" value="${delivery.base}/media/${componentID}"/>
+        </phingcall>
+
+
 
         <!-- Frontend -->
         <copy todir="${delivery.site}" overwrite="true">
@@ -134,8 +142,6 @@
             <fileset dir="${base.admin}" includes="**/*.*"></fileset>
         </copy>
 
-        <!-- <foreach list="${itsModules}" param="moduleID" target="doComponentLanguages"/>-->
-
         <move file="${delivery.admin}/${componentShortID}.xml" tofile="${delivery.base}/${componentShortID}.xml" overwrite="true"/>
 
         <echo message="packaging ${componentID}"/>
@@ -143,29 +149,22 @@
     </target>
 
 
-    <target name="doComponentLanguages">
-        <copy file="./administrator/language/${itsLanguages}/${itsLanguages}.${componentID}.ini"
-              todir="${delivery.base}/administrator/language/${itsLanguages}" overwrite="true"/>
-        <copy file="./language/${itsLanguages}/${itsLanguages}.${componentID}.ini" todir="${delivery.base}/language/${itsLanguages}"
-              overwrite="true"/>
-    </target>
-
-
     <target name="doPlugin">
         <echo message="preparing plugin ${pluginID} of type ${type}"/>
+
+        <!-- step 1-->
         <copy todir="${delivery.dir}/plugins/${type}" overwrite="true">
             <fileset dir="./plugins/${type}/${pluginID}" includes="**/*.*"></fileset>
         </copy>
 
-        <!-- media -->
-        <if>
-            <available file='./media/plg_${type}_${pluginID}' type='dir'/>
-            <then>
-                <copy todir="${delivery.dir}/plugins/${type}/plg_${type}_${pluginID}" overwrite="true">
-                    <fileset dir="./media/plg_${type}_${pluginID}" includes="**/*.*"></fileset>
-                </copy>
-            </then>
-        </if>
+        <!-- Optional Media -->
+        <phingcall target="copyIfDirExist">
+            <property name="from" value="./media/plg_${type}_${pluginID}"/>
+            <property name="to" value="${delivery.dir}/plugins/${type}/plg_${type}_${pluginID}"/>
+        </phingcall>
+
+        <!-- Optional Languages -->
+        <!-- are copied at step 1-->
 
         <echo message="packaging plugin ${pluginID} of type ${type}"/>
         <zip destfile="${packages.dir}/plg_${type}_${pluginID}.zip" basedir="${delivery.dir}/plugins/${type}"/>
@@ -177,21 +176,70 @@
         <copy todir="${delivery.dir}/modules/${moduleID}" overwrite="true">
             <fileset dir="./modules/${moduleID}" includes="**/*.*"></fileset>
         </copy>
-        <copy file="./language/${itsLanguages}/${itsLanguages}.${moduleID}.ini" todir="${delivery.dir}/modules/${moduleID}" overwrite="true"/>
-        <copy file="./language/${itsLanguages}/${itsLanguages}.${moduleID}.sys.ini" todir="${delivery.dir}/modules/${moduleID}" overwrite="true"/>
 
-        <!-- Media -->
-        <if>
-            <available file='./media/${moduleID}' type='dir'/>
-            <then>
-                <copy todir="${delivery.dir}/modules/${moduleID}/${moduleID}" overwrite="true">
-                    <fileset dir="./media/${moduleID}" includes="**/*.*"></fileset>
-                </copy>
-            </then>
-        </if>
+        <!-- Optional Languages -->
+        <phingcall target="copyLanguages">
+            <property name="file" value="${moduleID}.ini"/>
+            <property name="to" value="${delivery.dir}/modules/${moduleID}"/>
+        </phingcall>
+        <phingcall target="copyLanguages">
+            <property name="from" value="${moduleID}.sys.ini"/>
+            <property name="to" value="${delivery.dir}/modules/${moduleID}"/>
+        </phingcall>
+
+        <!-- Optional Media -->
+        <phingcall target="copyIfDirExist">
+            <property name="from" value="./media/${moduleID}"/>
+            <property name="to" value="${delivery.dir}/modules/${moduleID}/${moduleID}"/>
+        </phingcall>
 
         <echo message="packaging ${moduleID}"/>
         <zip destfile="${packages.dir}/${moduleID}.zip" basedir="${delivery.dir}/modules/${moduleID}"/>
     </target>
+
+
+    <target name="copyLanguages">
+        <foreach list="${itsLanguages}" param="language" target="copyLanguage">
+            <property name="from" value="./language/${language}/${language}.${file}"/>
+            <property name="to" value="${to}"/>
+        </foreach>
+    </target>
+
+    <target name="copyAdminLanguages">
+        <foreach list="${itsLanguages}" param="language" target="copyLanguage">
+            <property name="from" value="./administrator/language/${language}/${language}.${file}"/>
+            <property name="to" value="${delivery.base}/administrator/language/${itsLanguages}"/>
+        </foreach>
+    </target>
+
+    <target name="copyLanguage">
+        <phingcall target="copyIfFileExist">
+            <property name="from" value="./language/${language}/${language}.${moduleID}.ini"/>
+            <property name="to" value="${delivery.dir}/modules/${moduleID}"/>
+        </phingcall>
+    </target>
+
+
+    <target name="copyIfDirExist">
+        <if>
+            <available file='${from}' type='dir'/>
+            <then>
+                <copy todir="${to}" overwrite="true">
+                    <fileset dir="${from}" includes="**/*.*"></fileset>
+                </copy>
+            </then>
+        </if>
+    </target>
+
+
+    <target name="copyIfFileExist">
+        <if>
+            <available file='${from}' type='file'/>
+            <then>
+                <copy file="${from}" todir="${to}" overwrite="true"/>
+            </then>
+        </if>
+    </target>
+
 
 </project>
