@@ -1,0 +1,169 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Copyright (C) 2012-2013 Cédric Walter - www.waltercedric.com  - All Rights Reserved
+ * GNU/GPL v3.0
+ */
+ -->
+<project name="joomla-packager" default="build" basedir=".">
+
+    <property name="filename" value="pkg_${itsShortID}_${joomlaID}_${itsVersion}.zip"/>
+
+    <property name="delivery.dir" value="${temp}\${itsShortID}_${itsVersion}"/>
+    <property name="packages.dir" value="${temp}\pkg_${itsShortID}_${joomlaID}_${itsVersion}"/>
+
+    <property name="delivery.file" value="${delivery.dir}/../${filename}"/>
+
+    <target name="build" description="build the package" depends="clean">
+        <mkdir dir="${packages.dir}"/>
+        <echo message="Running build.xml. Assembling"/>
+        <phingcall target="doComponents"/>
+        <phingcall target="doPlugins"/>
+        <phingcall target="doModules"/>
+        <phingcall target="doLibraries"/>
+        <phingcall target="doCreateManifest"/>
+        <phingcall target="doCreateRelease" />
+    </target>
+
+    <target name="doComponents">
+        <foreach list="${itsComponents}" param="componentID" target="doComponent"/>
+    </target>
+    <target name="doPlugins">
+        <foreach list="${itsContentPlugins}" param="pluginID" target="doPlugin">
+            <property name="type" value="content"/>
+        </foreach>
+        <foreach list="${itsAuthenticationPlugins}" param="pluginID" target="doPlugin">
+            <property name="type" value="authentication"/>
+        </foreach>
+        <foreach list="${itsCaptchaPlugins}" param="pluginID" target="doPlugin">
+            <property name="type" value="captcha"/>
+        </foreach>
+        <foreach list="${itsEditorsPlugins}" param="pluginID" target="doPlugin">
+            <property name="type" value="editors"/>
+        </foreach>
+        <foreach list="${itsEditorsXtdPlugins}" param="pluginID" target="doPlugin">
+            <property name="type" value="editors-xtd"/>
+        </foreach>
+        <foreach list="${itsExtensionPlugins}" param="pluginID" target="doPlugin">
+            <property name="type" value="extension"/>
+        </foreach>
+        <foreach list="${itsFinderPlugins}" param="pluginID" target="doPlugin">
+            <property name="type" value="finder"/>
+        </foreach>
+        <foreach list="${itsQuickiconPlugins}" param="pluginID" target="doPlugin">
+            <property name="type" value="quickicon"/>
+        </foreach>
+        <foreach list="${itsSearchPlugins}" param="pluginID" target="doPlugin">
+            <property name="type" value="search"/>
+        </foreach>
+        <foreach list="${itsSystemPlugins}" param="pluginID" target="doPlugin">
+            <property name="type" value="system"/>
+        </foreach>
+        <foreach list="${itsUserPlugins}" param="pluginID" target="doPlugin">
+            <property name="type" value="user"/>
+        </foreach>
+    </target>
+    <target name="doModules">
+        <foreach list="${itsModules}" param="moduleID" target="doModule"/>
+    </target>
+    <target name="doLibraries">
+        <foreach list="${itsLibraries}" param="libraryID" target="doLibrary"/>
+    </target>
+
+    <target name="clean">
+        <echo message="Running Cleaning"/>
+        <delete dir="${delivery.dir}" includeemptydirs="true" verbose="true" failonerror="true"/>
+        <delete file="${delivery.file}"/>
+    </target>
+
+    <target name="doCreateRelease">
+        <echo message="creating ${delivery.file}"/>
+        <zip destfile="${delivery.file}">
+            <fileset dir="${packages.dir}">
+                <include name="*.zip"/>
+                <include name="pkg_${itsShortID}.xml"/>
+            </fileset>
+        </zip>
+    </target>
+
+    <target name="doCreateManifest">
+        <echo message="creating pkg_${itsShortID}.xml"/>
+
+        <echo file="${packages.dir}/pkg_${itsShortID}.xml" append="true">
+            TODO
+        </echo>
+        <!-- <copy file="pkg_${itsShortID}.xml" todir="${packages.dir}/" overwrite="true"/> -->
+    </target>
+
+    <target name="doLibrary">
+        <echo message="preparing ${itsLibraries}"/>
+        <copy todir="${delivery.dir}/libraries/${itsLibraries}" overwrite="true">
+            <fileset dir="./libraries/${libraryID}" includes="**/*"></fileset>
+        </copy>
+        <echo message="packaging ${itsLibraries}"/>
+        <zip destfile="${packages.dir}/lib_${libraryID}.zip" basedir="${delivery.dir}/libraries/${libraryID}"/>
+    </target>
+
+    <target name="doComponent">
+
+        <property name="delivery.base" value="${delivery.dir}/${componentID}/"/>
+        <property name="delivery.admin" value="${delivery.base}/administrator/components/${componentID}"/>
+        <property name="delivery.site" value="${delivery.base}/components/${componentID}"/>
+        <property name="base.admin" value="./administrator/components/${componentID}"/>
+        <property name="base.site" value="./components/${componentID}"/>
+
+        <echo message="preparing ${componentID}"/>
+        <copy todir="${delivery.base}/media/${componentID}" overwrite="true">
+            <fileset dir="./media/${componentID}" includes="**/*.*"></fileset>
+        </copy>
+        <!-- Frontend -->
+        <copy todir="${delivery.site}" overwrite="true">
+            <fileset dir="${base.site}" includes="**/*.*"></fileset>
+        </copy>
+        <!-- Backend -->
+        <copy todir="${delivery.admin}" overwrite="true">
+            <fileset dir="${base.admin}" includes="**/*.*"></fileset>
+        </copy>
+
+        <foreach list="${itsModules}" param="moduleID" target="doComponentLanguages"/>
+
+        <move file="${delivery.admin}/${componentID}.xml" tofile="${delivery.base}/${componentID}.xml" overwrite="true"/>
+
+        <echo message="packaging ${pluginID}"/>
+        <zip destfile="${packages.dir}/${componentID}.zip" basedir="${delivery.dir}/${componentID}"/>
+    </target>
+    <target name="doComponentLanguages">
+        <copy file="./administrator/language/${itsLanguages}/${itsLanguages}.${componentID}.ini"
+              todir="${delivery.base}/administrator/language/${itsLanguages}" overwrite="true"/>
+        <copy file="./language/${itsLanguages}/${itsLanguages}.${componentID}.ini" todir="${delivery.base}/language/${itsLanguages}"
+              overwrite="true"/>
+    </target>
+
+
+    <target name="doPlugin">
+        <echo message="preparing ${pluginID}"/>
+        <copy todir="${delivery.dir}/plugins/${type}" overwrite="true">
+            <fileset dir="./plugins/${type}/${pluginID}" includes="**/*.*"></fileset>
+        </copy>
+        <copy todir="${delivery.dir}/plugins/${type}/plg_${type}_${pluginID}" overwrite="true">
+            <fileset dir="./media/plg_${type}_${pluginID}" includes="**/*.*"></fileset>
+        </copy>
+        <echo message="packaging ${pluginID}"/>
+        <zip destfile="${packages.dir}/plg_${type}_${pluginID}.zip" basedir="${delivery.dir}/plugins/${type}"/>
+    </target>
+
+    <target name="doModule">
+        <echo message="preparing ${moduleID}"/>
+        <copy todir="${delivery.dir}/modules/${moduleID}" overwrite="true">
+            <fileset dir="./modules/${moduleID}" includes="**/*.*"></fileset>
+        </copy>
+        <copy file="./language/${itsLanguages}/${itsLanguages}.${moduleID}.ini" todir="${delivery.dir}/modules/${moduleID}" overwrite="true"/>
+        <copy file="./language/${itsLanguages}/${itsLanguages}.${moduleID}.sys.ini" todir="${delivery.dir}/modules/${moduleID}" overwrite="true"/>
+        <copy todir="${delivery.dir}/modules/${moduleID}/${moduleID}" overwrite="true">
+            <fileset dir="./media/${moduleID}" includes="**/*.*"></fileset>
+        </copy>
+        <echo message="packaging ${moduleID}"/>
+        <zip destfile="${packages.dir}/${moduleID}.zip" basedir="${delivery.dir}/modules/${moduleID}"/>
+    </target>
+
+</project>
