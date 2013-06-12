@@ -88,11 +88,12 @@
 
     <target name="doCreateManifest">
         <echo message="creating pkg_${itsShortID}.xml"/>
-
+<!--
         <echo file="${packages.dir}/pkg_${itsShortID}.xml" append="true">
-            TODO
-        </echo>
-        <!-- <copy file="pkg_${itsShortID}.xml" todir="${packages.dir}/" overwrite="true"/> -->
+           ideally generate this file with a template
+                   </echo>
+        <copy file="pkg_${itsShortID}.xml" todir="${packages.dir}/" overwrite="true"/> -->
+        <copy file="${manifestLocation}" todir="${packages.dir}/" overwrite="true"/>
     </target>
 
     <target name="doLibrary">
