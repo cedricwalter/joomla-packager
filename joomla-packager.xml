@@ -22,7 +22,7 @@
         <phingcall target="doModules"/>
         <phingcall target="doLibraries"/>
         <phingcall target="doCreateManifest"/>
-        <phingcall target="doCreateRelease" />
+        <phingcall target="doCreateRelease"/>
     </target>
 
     <target name="doComponents">
@@ -114,9 +114,17 @@
         <property name="base.site" value="./components/${componentID}"/>
 
         <echo message="preparing ${componentID}"/>
-        <copy todir="${delivery.base}/media/${componentID}" overwrite="true">
-            <fileset dir="./media/${componentID}" includes="**/*.*"></fileset>
-        </copy>
+
+        <!-- Media -->
+        <if>
+            <available file='./media/${componentID}' type='dir'/>
+            <then>
+                <copy todir="${delivery.base}/media/${componentID}" overwrite="true">
+                    <fileset dir="./media/${componentID}" includes="**/*.*"></fileset>
+                </copy>
+            </then>
+        </if>
+
         <!-- Frontend -->
         <copy todir="${delivery.site}" overwrite="true">
             <fileset dir="${base.site}" includes="**/*.*"></fileset>
@@ -148,9 +156,17 @@
         <copy todir="${delivery.dir}/plugins/${type}" overwrite="true">
             <fileset dir="./plugins/${type}/${pluginID}" includes="**/*.*"></fileset>
         </copy>
-        <copy todir="${delivery.dir}/plugins/${type}/plg_${type}_${pluginID}" overwrite="true">
-            <fileset dir="./media/plg_${type}_${pluginID}" includes="**/*.*"></fileset>
-        </copy>
+
+        <!-- media -->
+        <if>
+            <available file='./media/plg_${type}_${pluginID}' type='dir'/>
+            <then>
+                <copy todir="${delivery.dir}/plugins/${type}/plg_${type}_${pluginID}" overwrite="true">
+                    <fileset dir="./media/plg_${type}_${pluginID}" includes="**/*.*"></fileset>
+                </copy>
+            </then>
+        </if>
+
         <echo message="packaging plugin ${pluginID} of type ${type}"/>
         <zip destfile="${packages.dir}/plg_${type}_${pluginID}.zip" basedir="${delivery.dir}/plugins/${type}"/>
     </target>
@@ -163,9 +179,17 @@
         </copy>
         <copy file="./language/${itsLanguages}/${itsLanguages}.${moduleID}.ini" todir="${delivery.dir}/modules/${moduleID}" overwrite="true"/>
         <copy file="./language/${itsLanguages}/${itsLanguages}.${moduleID}.sys.ini" todir="${delivery.dir}/modules/${moduleID}" overwrite="true"/>
-        <copy todir="${delivery.dir}/modules/${moduleID}/${moduleID}" overwrite="true">
-            <fileset dir="./media/${moduleID}" includes="**/*.*"></fileset>
-        </copy>
+
+        <!-- Media -->
+        <if>
+            <available file='./media/${moduleID}' type='dir'/>
+            <then>
+                <copy todir="${delivery.dir}/modules/${moduleID}/${moduleID}" overwrite="true">
+                    <fileset dir="./media/${moduleID}" includes="**/*.*"></fileset>
+                </copy>
+            </then>
+        </if>
+
         <echo message="packaging ${moduleID}"/>
         <zip destfile="${packages.dir}/${moduleID}.zip" basedir="${delivery.dir}/modules/${moduleID}"/>
     </target>
