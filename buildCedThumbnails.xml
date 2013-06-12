@@ -32,6 +32,11 @@
     <property name="itsUserPlugins" value=""/>
     <property name="itsLanguages" value="en-GB"/>
 
+    <!-- temporary -->
+    <property name="manifestLocation" value="pkg_cedthumbnails.xml"/>
+
+
+
     <property name="temp" value="c:\temp"/>
 
 </project>
