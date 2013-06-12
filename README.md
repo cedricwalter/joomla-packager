@@ -14,8 +14,8 @@ http://www.cedricwalter.com/
 
 
 OPEN
-* Creation of manifest.xml in package is not generated through the script (but i am trying to)
-* 
+[ ] any feedback?
+[ ] Creation of manifest.xml in package is not generated through the script (but i am trying to)
 so you still need to put it in the resulting zip created, for buildCedThumbnails.xml it would look like
 
 ```xml
