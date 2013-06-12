@@ -30,7 +30,7 @@
     <property name="itsSearchPlugins" value=""/>
     <property name="itsSystemPlugins" value=""/>
     <property name="itsUserPlugins" value=""/>
-    <property name="itsLanguages" value="en-GB"/>
+    <property name="itsLanguages" value="en-GB,fr-FR"/>
 
     <!-- temporary -->
     <property name="manifestLocation" value="pkg_cedthumbnails.xml"/>
