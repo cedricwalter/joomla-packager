@@ -18,6 +18,8 @@ OPEN
 * 
 so you still need to put it in the resulting zip created, for buildCedThumbnails.xml it would look like
 
+```xml
+
 <?xml version="1.0" encoding="UTF-8" ?>
 <extension type="package" version="3.0">
     <name>cedthumbnails</name>
@@ -38,4 +40,6 @@ so you still need to put it in the resulting zip created, for buildCedThumbnails
         <file type="plugin" id="relatedthumbarticles" group="content">plg_content_relatedthumbitems.zip</file>
     </files>
 </extension>
+{code}
+```
 
