@@ -1,0 +1,40 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Copyright (C) 2012-2013 Cédric Walter - www.waltercedric.com  - All Rights Reserved
+ * GNU/GPL v3.0
+ */
+ -->
+<project name="build" default="build" basedir=".">
+
+    <import file="./joomla-packager.xml"/>
+
+    <property name="itsVersion" value="2.6.3"/>
+    <property name="itsShortID" value="cedtag"/>
+
+    <!-- j25, j30 or anything else -->
+    <property name="joomlaID" value="j25"/>
+
+    <!--- tokenized list of name separated by , if none apply leave empty-->
+    <property name="itsComponents" value="cedtag"/>
+    <property name="itsLibraries" value=""/>
+    <property name="itsModules" value="mod_cedtagcustom,mod_cedtaglatest,mod_cedtagmostpopular,mod_cedtagmostread,mod_cedtagrandom"/>
+    <property name="itsAuthenticationPlugins" value=""/>
+    <property name="itsContentPlugins" value="cedtag"/>
+    <property name="itsCaptchaPlugins" value=""/>
+    <property name="itsEditorsPlugins" value=""/>
+    <property name="itsEditorsXtdPlugins" value="cedtagadd"/>
+    <property name="itsExtensionPlugins" value=""/>
+    <property name="itsFinderPlugins" value=""/>
+    <property name="itsQuickiconPlugins" value=""/>
+    <property name="itsSearchPlugins" value="cedtagsearch"/>
+    <property name="itsSystemPlugins" value="cedtagsef"/>
+    <property name="itsUserPlugins" value=""/>
+    <property name="itsLanguages" value="en-GB"/>
+
+    <!-- temporary -->
+    <property name="manifestLocation" value="pkg_cedtag.xml"/>
+
+    <property name="temp" value="c:\temp"/>
+
+</project>
