@@ -1,0 +1,40 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Copyright (C) 2012-2013 Cédric Walter - www.waltercedric.com  - All Rights Reserved
+ * GNU/GPL v3.0
+ */
+ -->
+<project name="joomla-packager" default="build" basedir=".">
+
+    <import file="./joomla-packager.xml"/>
+
+    <property name="itsVersion" value="2.6.4"/>
+    <property name="itsShortID" value="cedphotofeed"/>
+
+    <!-- j25, j30 or anything else -->
+    <property name="joomlaID" value="j25"/>
+
+    <!--- tokenized list of name separated by , if none apply leave empty-->
+    <property name="itsComponents" value="cedphotofeed"/> <!--without com -->
+    <property name="itsLibraries" value=""/>
+    <property name="itsModules" value="mod_cedphotofeed"/>
+    <property name="itsAuthenticationPlugins" value=""/>
+    <property name="itsContentPlugins" value="photofeed"/>
+    <property name="itsCaptchaPlugins" value=""/>
+    <property name="itsEditorsPlugins" value=""/>
+    <property name="itsEditorsXtdPlugins" value="photofeed"/>
+    <property name="itsExtensionPlugins" value=""/>
+    <property name="itsFinderPlugins" value=""/>
+    <property name="itsQuickiconPlugins" value=""/>
+    <property name="itsSearchPlugins" value=""/>
+    <property name="itsSystemPlugins" value=""/>
+    <property name="itsUserPlugins" value=""/>
+    <property name="itsLanguages" value="en-GB"/>
+
+    <!-- temporary -->
+    <property name="manifestLocation" value="pkg_cedphotofeed.xml"/>
+
+    <property name="temp" value="c:\temp"/>
+
+</project>
