@@ -5,17 +5,19 @@ joomla-packager is a generic phing build script to build any 3rd extension, bein
 
 
 Usage
-=============
+------------
 see file buildCedThumbnails.xml / buildCedTag.xml 
 
 Remarks are welcomed
-http://www.waltercedric.com/
-http://www.cedricwalter.com/
++ http://www.waltercedric.com/
++ http://www.cedricwalter.com/
 
 
 OPEN
-=============
+------------
+
 [ ] any feedback?
+
 [ ] Creation of manifest.xml in package is not generated through the script (but i am trying to)
 so you still need to put it in the resulting zip created, for buildCedThumbnails.xml it would look like
 
