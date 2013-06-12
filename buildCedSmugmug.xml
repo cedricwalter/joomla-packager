@@ -1,0 +1,47 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * cedtag Copyright (C) 2012 Cédric Walter - www.waltercedric.com
+ *
+ * This program comes with ABSOLUTELY NO WARRANTY; for details type `show w'.
+ * This is free software, and you are welcome to redistribute it under certain
+ * conditions; type `show c' for details.
+ *
+ * @author Cédric Walter - www.waltercedric.com
+ *
+ * http://www.phing.info/docs/guide/stable/
+ */
+ -->
+<project name="build" default="build" basedir=".">
+
+    <import file="./joomla-packager.xml"/>
+
+    <property name="itsVersion" value="2.6.2"/>
+    <property name="itsShortID" value="cedsmugmug"/>
+
+    <!-- j25, j30 or anything else -->
+    <property name="joomlaID" value="j25"/>
+
+    <!--- tokenized list of name separated by , if none apply leave empty-->
+    <property name="itsComponents" value="cedsmugmug"/>
+    <property name="itsLibraries" value=""/>
+    <property name="itsModules" value="mod_smugmugbadge,mod_smugmugrandom,mod_smugmugslideshow,mod_smugmugvideo"/>
+    <property name="itsAuthenticationPlugins" value=""/>
+    <property name="itsContentPlugins" value="smugmugrandom,smugmugslideshow"/>
+    <property name="itsCaptchaPlugins" value=""/>
+    <property name="itsEditorsPlugins" value=""/>
+    <property name="itsEditorsXtdPlugins" value="smugmugrandom,smugmugslideshow"/>
+    <property name="itsExtensionPlugins" value=""/>
+    <property name="itsFinderPlugins" value=""/>
+    <property name="itsQuickiconPlugins" value=""/>
+    <property name="itsSearchPlugins" value=""/>
+    <property name="itsSystemPlugins" value=""/>
+    <property name="itsUserPlugins" value=""/>
+    <property name="itsLanguages" value="en-GB"/>
+
+    <property name="temp" value="c:\temp"/>
+
+    <!-- temporary -->
+    <property name="manifestLocation" value="pkg_cedsmugmug.xml"/>
+
+</project>
