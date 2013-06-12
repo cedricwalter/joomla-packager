@@ -6,6 +6,7 @@ joomla-packager is a generic phing build script to build any 3rd extension, bein
 Why?
 * If you respect Joomla's conventions, this packager will be able to create a build of any of your extensions
 * just configure one file (buildCedThumbnails.xml), mainly listing what your extension is made of and run
+* file all look the same = repetability of configuration (look at all example for joomla 2.5/3.0)
 
 Usage
 ------------
