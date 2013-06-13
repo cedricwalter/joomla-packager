@@ -59,7 +59,7 @@
         <foreach list="${itsSystemPlugins}" param="pluginID" target="doPlugin">
             <property name="type" value="system"/>
         </foreach>
-        <foreach list="${itsUserPlugins}" param="pluginID" target="doPlugin">
+        <foreach list="${itsUserPlugins}" param="pluginID" target="doPlugin" >
             <property name="type" value="user"/>
         </foreach>
     </target>
@@ -106,7 +106,7 @@
     </target>
 
     <target name="doComponent">
-        <property name="componentID" value="com_${componentShortID}/"/>
+        <property name="componentID" value="com_${componentShortID}"/>
 
         <property name="delivery.base" value="${delivery.dir}/${componentID}/"/>
         <property name="delivery.admin" value="${delivery.base}/administrator/components/${componentID}"/>
@@ -121,8 +121,8 @@
             <property name="file" value="${componentID}.ini"/>
             <property name="to" value="${delivery.base}/administrator/language/"/>
         </phingcall>
-        <phingcall target="copyLanguages">
-            <property name="from" value="${componentID}.ini"/>
+        <phingcall target="copyComponentLanguages">
+            <property name="file" value="${componentID}.ini"/>
             <property name="to" value="${delivery.base}/language/"/>
         </phingcall>
 
@@ -131,8 +131,6 @@
             <property name="from" value="./media/${componentID}"/>
             <property name="to" value="${delivery.base}/media/${componentID}"/>
         </phingcall>
-
-
 
         <!-- Frontend -->
         <copy todir="${delivery.site}" overwrite="true">
@@ -146,7 +144,9 @@
         <move file="${delivery.admin}/${componentShortID}.xml" tofile="${delivery.base}/${componentShortID}.xml" overwrite="true"/>
 
         <echo message="packaging ${componentID}"/>
-        <zip destfile="${packages.dir}/${componentID}.zip" basedir="${delivery.dir}/${componentID}"/>
+        <zip destfile="${packages.dir}/${componentID}.zip" basedir="${delivery.dir}/${componentID}">
+            <fileset dir="${delivery.dir}/${componentID}" includes="**/*"/>
+        </zip>
     </target>
 
 
@@ -168,7 +168,9 @@
         <!-- are copied at step 1-->
 
         <echo message="packaging plugin ${pluginID} of type ${type}"/>
-        <zip destfile="${packages.dir}/plg_${type}_${pluginID}.zip" basedir="${delivery.dir}/plugins/${type}"/>
+        <zip destfile="${packages.dir}/plg_${type}_${pluginID}.zip" basedir="${delivery.dir}/plugins/${type}">
+            <fileset dir="${delivery.dir}/plugins/${type}" includes="**/*"/>
+        </zip>
     </target>
 
 
@@ -179,12 +181,12 @@
         </copy>
 
         <!-- Optional Languages -->
-        <phingcall target="copyLanguages">
+        <phingcall target="copyModuleLanguages">
             <property name="file" value="${moduleID}.ini"/>
             <property name="to" value="${delivery.dir}/modules/${moduleID}"/>
         </phingcall>
-        <phingcall target="copyLanguages">
-            <property name="from" value="${moduleID}.sys.ini"/>
+        <phingcall target="copyModuleLanguages">
+            <property name="file" value="${moduleID}.sys.ini"/>
             <property name="to" value="${delivery.dir}/modules/${moduleID}"/>
         </phingcall>
 
@@ -195,28 +197,39 @@
         </phingcall>
 
         <echo message="packaging ${moduleID}"/>
-        <zip destfile="${packages.dir}/${moduleID}.zip" basedir="${delivery.dir}/modules/${moduleID}"/>
+        <zip destfile="${packages.dir}/${moduleID}.zip" basedir="${delivery.dir}/modules/${moduleID}">
+            <fileset dir="${delivery.dir}/modules/${moduleID}" includes="**/*"/>
+        </zip>
     </target>
 
 
-    <target name="copyLanguages">
+    <!-- TODO use the same pattern directory for both, check what joomla recommend -->
+    <target name="copyComponentLanguages">
         <foreach list="${itsLanguages}" param="language" target="copyLanguage">
-            <property name="from" value="./language/${language}/${language}.${file}"/>
+            <property name="file" value="./language/${language}/${language}.${file}"/>
+            <property name="to" value="${to}/${language}"/>
+        </foreach>
+    </target>
+
+    <target name="copyModuleLanguages">
+        <foreach list="${itsLanguages}" param="language" target="copyLanguage">
+            <property name="file" value="./language/${language}/${language}.${file}"/>
             <property name="to" value="${to}"/>
         </foreach>
     </target>
 
+
     <target name="copyAdminLanguages">
         <foreach list="${itsLanguages}" param="language" target="copyLanguage">
-            <property name="from" value="./administrator/language/${language}/${language}.${file}"/>
+            <property name="file" value="./administrator/language/${language}/${language}.${file}"/>
             <property name="to" value="${delivery.base}/administrator/language/${itsLanguages}"/>
         </foreach>
     </target>
 
     <target name="copyLanguage">
         <phingcall target="copyIfFileExist">
-            <property name="from" value="./language/${language}/${language}.${moduleID}.ini"/>
-            <property name="to" value="${delivery.dir}/modules/${moduleID}"/>
+            <property name="file" value="${file}"/>
+            <property name="to" value="${to}"/>
         </phingcall>
     </target>
 
@@ -234,10 +247,11 @@
 
 
     <target name="copyIfFileExist">
+        <echo message="Copy if file exist ${file} to ${to}" />
         <if>
-            <available file='${from}' type='file'/>
+            <available file='${file}' type='file'/>
             <then>
-                <copy file="${from}" todir="${to}" overwrite="true"/>
+                <copy file="${file}" todir="${to}" overwrite="true"/>
             </then>
         </if>
     </target>
