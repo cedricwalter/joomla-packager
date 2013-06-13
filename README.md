@@ -25,15 +25,19 @@ Conventions
 This script use standard joomla conventions to perform the packaging, here is what is implemented
 
 Modules
-* Code is located in /modules/mod_${xxxxx} and self contained
-* Languages files are optionnal but if they exist are located at /language/xx-yy/mod_${xxxxx}.ini /language/xx-yy/mod_${xxxxx}.sys.ini
-* Media files (css,js,images) are optionnal but if they exist are located at /media/mod_${xxxxx}
+* 1. Code is located in /modules/mod_${xxxxx} and self contained
+* 2. Languages files are optionnal but if they exist are located at /language/xx-yy/mod_${xxxxx}.ini /language/xx-yy/mod_${xxxxx}.sys.ini
+* 3. Media files (css,js,images) are optionnal but if they exist are located at /media/mod_${xxxxx}
 
 Plugins
-1. Code is located in /plugins/type/xxxxx and self contained
-2. Languages files are optionnal but if they exist are located at /plugins/${type}/${xxxxx}/language/ or anywhere else in directory at step 1.
-3. Media files (css,js,images) are optionnal but if they exist are located at /media/plg_${type}_${xxxxx}
+* 1. Code is located in /plugins/${type}/${xxxxx} and self contained
+* 2. Languages files are optionnal but if they exist are located at /plugins/${type}/${xxxxx}/language/ or anywhere else in directory at step 1.
+* 3. Media files (css,js,images) are optionnal but if they exist are located at /media/plg_${type}_${xxxxx}
 
+Components
+* 1. Code is located in /administrator/components/${xxxxx} and /components/${xxxxx} and is self contained 
+* 2. Languages files are optionnal but if they exist are located at /administrator/language/xx-yy/${xxxxx}.ini and /language/xx-yy/${xxxxx}.ini and 
+* 3. Media files (css,js,images) are optionnal but if they exist are located at /media/${xxxxx}
 
 
 OPEN
