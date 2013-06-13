@@ -18,6 +18,22 @@ Download https://raw.github.com/cedricwalter/joomla-packager/master/joomla-packa
 Remarks are welcomed
 + http://www.waltercedric.com/
 + http://www.cedricwalter.com/
+ 
+
+Conventions
+------------
+This script use standard joomla conventions to perform the packaging, here is what is implemented
+
+Modules
+* Code is located in /modules/mod_${xxxxx} and self contained
+* Languages files are optionnal but if they exist are located at /language/xx-yy/mod_${xxxxx}.ini /language/xx-yy/mod_${xxxxx}.sys.ini
+* Media files (css,js,images) are optionnal but if they exist are located at /media/mod_${xxxxx}
+
+Plugins
+1. Code is located in /plugins/type/xxxxx and self contained
+2. Languages files are optionnal but if they exist are located at /plugins/${type}/${xxxxx}/language/ or anywhere else in directory at step 1.
+3. Media files (css,js,images) are optionnal but if they exist are located at /media/plg_${type}_${xxxxx}
+
 
 
 OPEN
