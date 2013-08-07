@@ -72,7 +72,9 @@
 
     <target name="clean">
         <echo message="Running Cleaning"/>
-        <delete dir="${delivery.dir}" includeemptydirs="true" verbose="true" failonerror="true"/>
+        <phingcall target="deleteDirIfExist">
+            <param name="dir" value="${delivery.dir}"  />
+        </phingcall>
         <delete file="${delivery.file}"/>
     </target>
 
@@ -233,7 +235,6 @@
         </phingcall>
     </target>
 
-
     <target name="copyIfDirExist">
         <if>
             <available file='${from}' type='dir'/>
@@ -245,6 +246,14 @@
         </if>
     </target>
 
+    <target name="deleteDirIfExist">
+        <if>
+            <available file='${dir}' type='dir'/>
+            <then>
+                <delete dir="${dir}" includeemptydirs="true" verbose="true" failonerror="true"/>
+            </then>
+        </if>
+    </target>
 
     <target name="copyIfFileExist">
         <echo message="Copy if file exist ${file} to ${to}" />
@@ -255,6 +264,5 @@
             </then>
         </if>
     </target>
-
 
 </project>
