@@ -7,7 +7,7 @@ Why?
 * a single script to rule all your need of joomla packaging: multi modules/ multi plugins/multi components/multi library is supported
 * If you respect Joomla's conventions, this packager will be able to create a build of any of your extensions or set of extensions
 * just configure one file (like for example in buildCedThumbnails.xml), mainly listing what your extension is made of and run
-* file all look the same = repetability of configuration (look at all example for joomla 2.5/3.0)
+* file all look the same = repeatability = convention over configuration
 
 Usage
 ------------
@@ -26,21 +26,21 @@ This script use standard joomla conventions to perform the packaging, here is wh
 
 Modules
 * 1. Code is located in /modules/mod_${xxxxx} and self contained
-* 2. Languages files are optionnal but if they exist are located at /language/xx-yy/mod_${xxxxx}.ini /language/xx-yy/mod_${xxxxx}.sys.ini
+* 2. Languages files are optional but if they exist are located at /language/xx-yy/mod_${xxxxx}.ini /language/xx-yy/mod_${xxxxx}.sys.ini
 * 3. Media files (css,js,images) are optionnal but if they exist are located at /media/mod_${xxxxx}
 * 4. name of zip files as follow:
  * mod_{yourextension1}.zip
  
 Plugins
 * 1. Code is located in /plugins/${type}/${xxxxx} and self contained
-* 2. Languages files are optionnal but if they exist are located at /plugins/${type}/${xxxxx}/language/ or anywhere else in directory at step 1.
+* 2. Languages files are optional but if they exist are located at /plugins/${type}/${xxxxx}/language/ or anywhere else in directory at step 1.
 * 3. Media files (css,js,images) are optionnal but if they exist are located at /media/plg_${type}_${xxxxx}
 * 4. name of zip files as follow:
  * plg_${type}_{yourextension}.zip
 
 Components
 * 1. Code is located in /administrator/components/${xxxxx} and /components/${xxxxx} and is self contained 
-* 2. Languages files are optionnal but if they exist are located at /administrator/language/xx-yy/${xxxxx}.ini and /language/xx-yy/${xxxxx}.ini and 
+* 2. Languages files are optional but if they exist are located at /administrator/language/xx-yy/${xxxxx}.ini and /language/xx-yy/${xxxxx}.ini and 
 * 3. Media files (css,js,images) are optionnal but if they exist are located at /media/${xxxxx}
 
 Packages
