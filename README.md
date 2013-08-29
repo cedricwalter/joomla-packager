@@ -11,9 +11,11 @@ Why?
 
 Usage
 ------------
-see file buildCedThumbnails.xml for building cedthumbnails one of my extensions
-You only need to copy and touch this file.
-Download https://raw.github.com/cedricwalter/joomla-packager/master/joomla-packager.xml locally
+Download https://raw.github.com/cedricwalter/joomla-packager/master/joomla-packager.xml locally 
+Download a copy of buildCedThumbnails.xml You only need to rename and touch this file, it is self documented. 
+Download a copy of pkg_cedthumbnails.xml You only need to update this file if you alter the structure. (later Joomla-packager will create this file on the fly) 
+Run the main target build of buildCedThumbnails.xml 
+
 
 Remarks are welcomed
 + http://www.waltercedric.com/
