@@ -13,6 +13,7 @@ Support for Premium and Free extensions
 
 This packager use preprocessing functions in all modules, component and plugins (anywhere in php, js, css, xml files). To use them you can put anywhere
 
+{code}
 #if premium
 ...
 #endif
@@ -21,9 +22,10 @@ or
 #if free
 ...
 #endif
-
+{code}
 
 More functions are supported If / Else if:
+{code}
 #if DEFINITION : succeeds if DEFINITION is set and is true (in the PHP way)
 #ifdef DEFINITION : succeeds if DEFINITION is set
 #ifndef DEFINITION : succeeds if DEFINITION is not set
@@ -31,7 +33,7 @@ More functions are supported If / Else if:
 #elifdef DEFINITION
 #elifndef DEFINITION
 #endif
-
+{code}
 
 Usage
 ------------
