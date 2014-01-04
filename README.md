@@ -9,11 +9,36 @@ Why?
 * just configure one file (like for example in buildCedThumbnails.xml), mainly listing what your extension is made of and run
 * file all look the same = repeatability = convention over configuration
 
+Support for Premium and Free extensions
+
+This packager use preprocessing functions in all modules, component and plugins (anywhere in php, js, css, xml files). To use them you can put anywhere
+
+#if premium
+...
+#endif
+
+or 
+#if free
+...
+#endif
+
+
+More functions are supported If / Else if:
+#if DEFINITION : succeeds if DEFINITION is set and is true (in the PHP way)
+#ifdef DEFINITION : succeeds if DEFINITION is set
+#ifndef DEFINITION : succeeds if DEFINITION is not set
+#elif DEFINITION
+#elifdef DEFINITION
+#elifndef DEFINITION
+#endif
+
+
 Usage
 ------------
 Download https://raw.github.com/cedricwalter/joomla-packager/master/joomla-packager.xml locally 
 Download a copy of buildCedThumbnails.xml You only need to rename and touch this file, it is self documented. 
 Download a copy of pkg_cedthumbnails.xml You only need to update this file if you alter the structure. (later Joomla-packager will create this file on the fly) 
+Download the directory preprocessor also, it must be in the same directory as the file joomla-packager.xml
 Run the main target build of buildCedThumbnails.xml 
 
 
