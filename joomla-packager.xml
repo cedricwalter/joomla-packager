@@ -5,7 +5,7 @@
  * GNU/GPL v3.0
  */
  -->
-<project name="joomla-packager" default="build" basedir=".">
+<project name="joomla-packager" default="build.free" basedir=".">
 
     <property name="filename" value="pkg_${itsShortID}_${joomlaID}_${itsVersion}.zip"/>
 
@@ -14,7 +14,9 @@
 
     <property name="delivery.file" value="${delivery.dir}/../${filename}"/>
 
-    <target name="build" description="build the package" depends="clean">
+    <target name="build.premium" description="build the package" depends="clean">
+        <property name="isPremium" value="1"/>
+        <property name="isFree" value="0"/>
         <mkdir dir="${packages.dir}"/>
         <echo message="Running build.xml. Assembling"/>
         <phingcall target="doComponents"/>
@@ -24,6 +26,21 @@
         <phingcall target="doCreateManifest"/>
         <phingcall target="doCreateRelease"/>
     </target>
+
+    <target name="build.free" description="build the package" depends="clean">
+        <property name="isPremium" value="0"/>
+        <property name="isFree" value="1"/>
+
+        <mkdir dir="${packages.dir}"/>
+        <echo message="Running build.xml. Assembling"/>
+        <phingcall target="doComponents"/>
+        <phingcall target="doPlugins"/>
+        <phingcall target="doModules"/>
+        <phingcall target="doLibraries"/>
+        <phingcall target="doCreateManifest"/>
+        <phingcall target="doCreateRelease"/>
+    </target>
+
 
     <target name="doComponents">
         <foreach list="${itsComponents}" param="componentShortID" target="doComponent"/>
@@ -59,7 +76,7 @@
         <foreach list="${itsSystemPlugins}" param="pluginID" target="doPlugin">
             <property name="type" value="system"/>
         </foreach>
-        <foreach list="${itsUserPlugins}" param="pluginID" target="doPlugin" >
+        <foreach list="${itsUserPlugins}" param="pluginID" target="doPlugin">
             <property name="type" value="user"/>
         </foreach>
     </target>
@@ -73,7 +90,7 @@
     <target name="clean">
         <echo message="Running Cleaning"/>
         <phingcall target="deleteDirIfExist">
-            <param name="dir" value="${delivery.dir}"  />
+            <param name="dir" value="${delivery.dir}"/>
         </phingcall>
         <delete file="${delivery.file}"/>
     </target>
@@ -90,11 +107,11 @@
 
     <target name="doCreateManifest">
         <echo message="creating pkg_${itsShortID}.xml"/>
-<!--
-        <echo file="${packages.dir}/pkg_${itsShortID}.xml" append="true">
-           ideally generate this file with a template
-                   </echo>
-        <copy file="pkg_${itsShortID}.xml" todir="${packages.dir}/" overwrite="true"/> -->
+        <!--
+                <echo file="${packages.dir}/pkg_${itsShortID}.xml" append="true">
+                   ideally generate this file with a template
+                           </echo>
+                <copy file="pkg_${itsShortID}.xml" todir="${packages.dir}/" overwrite="true"/> -->
         <copy file="${manifestLocation}" todir="${packages.dir}/" overwrite="true"/>
     </target>
 
@@ -102,6 +119,13 @@
         <echo message="preparing ${itsLibraries}"/>
         <copy todir="${delivery.dir}/libraries/${itsLibraries}" overwrite="true">
             <fileset dir="./libraries/${libraryID}" includes="**/*"></fileset>
+            <filterchain>
+                <filterreader classname="preprocessor.PreProcessorFilter">
+                    <param name="premium" value="${isPremium}"/>
+                    <param name="free" value="${isFree}"/>
+                    <param name="macrodir" value="preprocessor/macros"/>
+                </filterreader>
+            </filterchain>
         </copy>
         <echo message="packaging ${itsLibraries}"/>
         <zip destfile="${packages.dir}/lib_${libraryID}.zip" basedir="${delivery.dir}/libraries/${libraryID}"/>
@@ -137,10 +161,24 @@
         <!-- Frontend -->
         <copy todir="${delivery.site}" overwrite="true">
             <fileset dir="${base.site}" includes="**/*.*"></fileset>
+            <filterchain>
+                <filterreader classname="preprocessor.PreProcessorFilter">
+                    <param name="premium" value="${isPremium}"/>
+                    <param name="free" value="${isFree}"/>
+                    <param name="macrodir" value="preprocessor/macros"/>
+                </filterreader>
+            </filterchain>
         </copy>
         <!-- Backend -->
         <copy todir="${delivery.admin}" overwrite="true">
             <fileset dir="${base.admin}" includes="**/*.*"></fileset>
+            <filterchain>
+                <filterreader classname="preprocessor.PreProcessorFilter">
+                    <param name="premium" value="${isPremium}"/>
+                    <param name="free" value="${isFree}"/>
+                    <param name="macrodir" value="preprocessor/macros"/>
+                </filterreader>
+            </filterchain>
         </copy>
 
         <move file="${delivery.admin}/${componentShortID}.xml" tofile="${delivery.base}/${componentShortID}.xml" overwrite="true"/>
@@ -156,22 +194,29 @@
         <echo message="preparing plugin ${pluginID} of type ${type}"/>
 
         <!-- step 1-->
-        <copy todir="${delivery.dir}/plugins/${type}" overwrite="true">
+        <copy todir="${delivery.dir}/plugins/${type}/${pluginID}" overwrite="true">
             <fileset dir="./plugins/${type}/${pluginID}" includes="**/*.*"></fileset>
+            <filterchain>
+                <filterreader classname="preprocessor.PreProcessorFilter">
+                    <param name="premium" value="${isPremium}"/>
+                    <param name="free" value="${isFree}"/>
+                    <param name="macrodir" value="preprocessor/macros"/>
+                </filterreader>
+            </filterchain>
         </copy>
 
         <!-- Optional Media -->
         <phingcall target="copyIfDirExist">
             <property name="from" value="./media/plg_${type}_${pluginID}"/>
-            <property name="to" value="${delivery.dir}/plugins/${type}/plg_${type}_${pluginID}"/>
+            <property name="to" value="${delivery.dir}/plugins/${type}/${pluginID}/plg_${type}_${pluginID}"/>
         </phingcall>
 
         <!-- Optional Languages -->
         <!-- are copied at step 1-->
 
         <echo message="packaging plugin ${pluginID} of type ${type}"/>
-        <zip destfile="${packages.dir}/plg_${type}_${pluginID}.zip" basedir="${delivery.dir}/plugins/${type}">
-            <fileset dir="${delivery.dir}/plugins/${type}" includes="**/*"/>
+        <zip destfile="${packages.dir}/plg_${type}_${pluginID}.zip" basedir="${delivery.dir}/plugins/${type}/${pluginID}">
+            <fileset dir="${delivery.dir}/plugins/${type}/${pluginID}" includes="**/*"/>
         </zip>
     </target>
 
@@ -180,6 +225,13 @@
         <echo message="preparing ${moduleID}"/>
         <copy todir="${delivery.dir}/modules/${moduleID}" overwrite="true">
             <fileset dir="./modules/${moduleID}" includes="**/*.*"></fileset>
+            <filterchain>
+                <filterreader classname="preprocessor.PreProcessorFilter">
+                    <param name="premium" value="${isPremium}"/>
+                    <param name="free" value="${isFree}"/>
+                    <param name="macrodir" value="preprocessor/macros"/>
+                </filterreader>
+            </filterchain>
         </copy>
 
         <!-- Optional Languages -->
@@ -241,6 +293,13 @@
             <then>
                 <copy todir="${to}" overwrite="true">
                     <fileset dir="${from}" includes="**/*.*"></fileset>
+                    <filterchain>
+                        <filterreader classname="preprocessor.PreProcessorFilter">
+                            <param name="premium" value="${isPremium}"/>
+                            <param name="free" value="${isFree}"/>
+                            <param name="macrodir" value="preprocessor/macros"/>
+                        </filterreader>
+                    </filterchain>
                 </copy>
             </then>
         </if>
@@ -256,7 +315,7 @@
     </target>
 
     <target name="copyIfFileExist">
-        <echo message="Copy if file exist ${file} to ${to}" />
+        <echo message="Copy if file exist ${file} to ${to}"/>
         <if>
             <available file='${file}' type='file'/>
             <then>
