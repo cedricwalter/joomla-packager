@@ -14,12 +14,15 @@ Support for Premium and Free extensions
 This packager use preprocessing functions in all modules, component and plugins (anywhere in php, js, css, xml files). To use them you can put anywhere
 
 
-```#if premium
+```
+#if premium
 ...
-#endif```
+#endif
+```
 
 or 
-```#if free
+```
+#if free
 ...
 #endif
 ```
