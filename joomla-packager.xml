@@ -1,22 +1,125 @@
 <?xml version="1.0"?>
-<!--
-/**
- * Copyright (C) 2012-2013 Cédric Walter - www.waltercedric.com  - All Rights Reserved
- * GNU/GPL v3.0
- */
- -->
-<project name="joomla-packager" default="build.free" basedir=".">
+<project name="joomla-packager" default="clean" basedir=".">
 
-    <property name="filename" value="pkg_${itsShortID}_${joomlaID}_${itsVersion}.zip"/>
+    <tstamp>
+        <format property="DATE" pattern="%Y-%m-%d"/>
+    </tstamp>
 
-    <property name="delivery.dir" value="${temp}\${itsShortID}_${itsVersion}"/>
-    <property name="packages.dir" value="${temp}\pkg_${itsShortID}_${joomlaID}_${itsVersion}"/>
+    <!-- TODO move to properties-->
+    <!-- TODO move to properties-->
+    <!--<property file="build/config/build.properties" />-->
+    <property name="repository.dir" value="C:\Users\cedric\Dropbox\galaxiis.com\httpdocs\repository"/>
+    <property name="jed.dir" value="C:\Users\cedric\Dropbox\galaxiis.com\httpdocs\jed"/>
+    <property name="showcase.dir" value="C:\Users\cedric\Dropbox\galaxiis.com\subdomains\showcase"/>
+    <property name="joomla.dir" value="C:\Users\cedric\Dropbox\phpstart\www\dev"/>
 
-    <property name="delivery.file" value="${delivery.dir}/../${filename}"/>
+    <!-- http://www.zachleat.com/web/using-phing-to-automate-javascript-and-css-minimization/ -->
+    <taskdef classname="yuicompressor.yuicompressorTask" name="yuicompressor"/>
 
-    <target name="build.premium" description="build the package" depends="clean">
-        <property name="isPremium" value="1"/>
-        <property name="isFree" value="0"/>
+    <target name="package.all" description="build all package"
+            depends="clean,package.premium30,package.premium25,package.free30,package.free25">
+    </target>
+
+    <target name="package.premium30" description="build the package">
+        <phingcall target="build">
+            <property name="packageType" value=""/>
+            <property name="isJoomla30" value="1"/>
+            <property name="isJoomla25" value="0"/>
+            <property name="joomlaID" value="j33_j34"/>
+
+            <property name="isPremium" value="1"/>
+            <property name="isFree" value="0"/>
+            <property name="disabled" value="false"/>
+
+            <property name="phase" value="package"/>
+        </phingcall>
+    </target>
+    <target name="package.premium25" description="build the package">
+        <phingcall target="build">
+            <property name="packageType" value=""/>
+            <property name="isJoomla30" value="0"/>
+            <property name="isJoomla25" value="1"/>
+            <property name="joomlaID" value="j25"/>
+
+            <property name="isPremium" value="1"/>
+            <property name="isFree" value="0"/>
+            <property name="disabled" value="false"/>
+
+            <property name="phase" value="package"/>
+        </phingcall>
+    </target>
+
+    <target name="package.free30" description="build the package">
+        <phingcall target="build">
+            <property name="packageType" value="-free"/>
+            <property name="isJoomla30" value="1"/>
+            <property name="isJoomla25" value="0"/>
+            <property name="joomlaID" value="j33_j34"/>
+
+            <property name="isPremium" value="0"/>
+            <property name="isFree" value="1"/>
+            <property name="disabled" value="true"/>
+
+            <property name="phase" value="package"/>
+        </phingcall>
+    </target>
+    <target name="package.free25" description="build the package">
+        <phingcall target="build">
+            <property name="packageType" value="-free"/>
+            <property name="isJoomla30" value="0"/>
+            <property name="isJoomla25" value="1"/>
+            <property name="joomlaID" value="j25"/>
+
+            <property name="isPremium" value="0"/>
+            <property name="isFree" value="1"/>
+            <property name="disabled" value="true"/>
+
+            <property name="phase" value="package"/>
+        </phingcall>
+    </target>
+
+    <target name="deploy.all" depends="clean,deploy.premium,deploy.free">
+    </target>
+
+    <target name="deploy.premium" depends="clean">
+        <phingcall target="build">
+            <property name="packageType" value=""/>
+            <property name="isJoomla30" value="1"/>
+            <property name="isJoomla25" value="0"/>
+            <property name="joomlaID" value="j33_j34"/>
+
+            <property name="isPremium" value="1"/>
+            <property name="isFree" value="0"/>
+            <property name="disabled" value="false"/>
+
+            <property name="phase" value="deploy"/>
+        </phingcall>
+    </target>
+
+    <target name="deploy.free" depends="clean">
+        <phingcall target="build">
+            <property name="packageType" value="-free"/>
+            <property name="isJoomla30" value="1"/>
+            <property name="isJoomla25" value="0"/>
+            <property name="joomlaID" value="j34_j34"/>
+
+            <property name="isPremium" value="0"/>
+            <property name="isFree" value="1"/>
+            <property name="disabled" value="true"/>
+
+            <property name="phase" value="deploy"/>
+        </phingcall>
+    </target>
+
+    <target name="build" depends="clean" hidden="true">
+        <property name="currentVersion" value="${itsVersion}"/>
+        <!--<property name="currentVersion" value="${itsVersion}${packageType}"/>-->
+
+        <property name="filename" value="pkg_${itsShortID}_${joomlaID}_${itsVersion}${packageType}.zip"/>
+        <property name="delivery.dir" value="${temp}\${itsShortID}_${itsVersion}${packageType}"/>
+        <property name="packages.dir" value="${temp}\pkg_${itsShortID}_${joomlaID}_${itsVersion}${packageType}"/>
+        <property name="delivery.file" value="${delivery.dir}/../${filename}"/>
+
         <mkdir dir="${packages.dir}"/>
         <echo message="Running build.xml. Assembling"/>
         <phingcall target="doComponents"/>
@@ -25,65 +128,97 @@
         <phingcall target="doLibraries"/>
         <phingcall target="doCreateManifest"/>
         <phingcall target="doCreateRelease"/>
+
+        <if>
+            <equals arg1="${phase}" arg2="deploy" />
+            <then>
+                <phingcall target="doMoveToRepository"/>
+                <phingcall target="createChangelog"/>
+                <phingcall target="updateJedUpdate"/>
+            </then>
+        </if>
     </target>
 
-    <target name="build.free" description="build the package" depends="clean">
-        <property name="isPremium" value="0"/>
-        <property name="isFree" value="1"/>
-
-        <mkdir dir="${packages.dir}"/>
-        <echo message="Running build.xml. Assembling"/>
-        <phingcall target="doComponents"/>
-        <phingcall target="doPlugins"/>
-        <phingcall target="doModules"/>
-        <phingcall target="doLibraries"/>
-        <phingcall target="doCreateManifest"/>
-        <phingcall target="doCreateRelease"/>
+    <target name="yuicompressor" description="build the package" depends="clean"  hidden="true">
+        <yuicompressor inputfiles="${build.srcdir}/js/_files.php" outputcombined="${build.deploydir}/js/all.js" outputmin="${build.deploydir}/js/all-min.js"/>
     </target>
 
+    <target name="doMoveToShowcase" hidden="true">
+        <echo message="Copy all files to showcase in ${showcase.dir}"/>
 
-    <target name="doComponents">
+        <phingcall target="copyIfDirExist">
+            <property name="from" value="administrator/components/com_${itsShortID}"/>
+            <property name="to" value="${showcase.dir}/administrator/components/com_${itsShortID}"/>
+        </phingcall>
+        <phingcall target="copyIfDirExist">
+            <property name="from" value="components/com_${itsShortID}"/>
+            <property name="to" value="${showcase.dir}/components/com_${itsShortID}"/>
+        </phingcall>
+
+        <!--<phingcall target="copyIfDirExist">-->
+            <!--<property name="from" value="${delivery.dir}"/>-->
+            <!--<property name="to" value="${showcase.dir}"/>-->
+        <!--</phingcall>-->
+    </target>
+
+    <target name="doComponents" hidden="true">
         <foreach list="${itsComponents}" param="componentShortID" target="doComponent"/>
     </target>
-    <target name="doPlugins">
+
+    <target name="doPlugins" hidden="true">
         <foreach list="${itsContentPlugins}" param="pluginID" target="doPlugin">
             <property name="type" value="content"/>
+            <property name="package.buildType" value="${package.buildType}"/>
         </foreach>
         <foreach list="${itsAuthenticationPlugins}" param="pluginID" target="doPlugin">
             <property name="type" value="authentication"/>
+            <property name="package.buildType" value="${package.buildType}"/>
         </foreach>
         <foreach list="${itsCaptchaPlugins}" param="pluginID" target="doPlugin">
             <property name="type" value="captcha"/>
+            <property name="package.buildType" value="${package.buildType}"/>
         </foreach>
         <foreach list="${itsEditorsPlugins}" param="pluginID" target="doPlugin">
             <property name="type" value="editors"/>
+            <property name="package.buildType" value="${package.buildType}"/>
         </foreach>
         <foreach list="${itsEditorsXtdPlugins}" param="pluginID" target="doPlugin">
             <property name="type" value="editors-xtd"/>
+            <property name="package.buildType" value="${package.buildType}"/>
         </foreach>
         <foreach list="${itsExtensionPlugins}" param="pluginID" target="doPlugin">
             <property name="type" value="extension"/>
+            <property name="package.buildType" value="${package.buildType}"/>
         </foreach>
         <foreach list="${itsFinderPlugins}" param="pluginID" target="doPlugin">
             <property name="type" value="finder"/>
+            <property name="package.buildType" value="${package.buildType}"/>
         </foreach>
         <foreach list="${itsQuickiconPlugins}" param="pluginID" target="doPlugin">
             <property name="type" value="quickicon"/>
+            <property name="package.buildType" value="${package.buildType}"/>
         </foreach>
         <foreach list="${itsSearchPlugins}" param="pluginID" target="doPlugin">
             <property name="type" value="search"/>
+            <property name="package.buildType" value="${package.buildType}"/>
         </foreach>
         <foreach list="${itsSystemPlugins}" param="pluginID" target="doPlugin">
             <property name="type" value="system"/>
+            <property name="package.buildType" value="${package.buildType}"/>
         </foreach>
         <foreach list="${itsUserPlugins}" param="pluginID" target="doPlugin">
             <property name="type" value="user"/>
+            <property name="package.buildType" value="${package.buildType}"/>
+        </foreach>
+        <foreach list="${itsXmlrpcPlugins}" param="pluginID" target="doPlugin">
+            <property name="type" value="xmlrpc"/>
+            <property name="package.buildType" value="${package.buildType}"/>
         </foreach>
     </target>
-    <target name="doModules">
+    <target name="doModules" hidden="true">
         <foreach list="${itsModules}" param="moduleID" target="doModule"/>
     </target>
-    <target name="doLibraries">
+    <target name="doLibraries" hidden="true">
         <foreach list="${itsLibraries}" param="libraryID" target="doLibrary"/>
     </target>
 
@@ -95,7 +230,7 @@
         <delete file="${delivery.file}"/>
     </target>
 
-    <target name="doCreateRelease">
+    <target name="doCreateRelease" hidden="true">
         <echo message="creating ${delivery.file}"/>
         <zip destfile="${delivery.file}">
             <fileset dir="${packages.dir}">
@@ -103,42 +238,75 @@
                 <include name="pkg_${itsShortID}.xml"/>
             </fileset>
         </zip>
+        <!--<delete dir="${packages.dir}"/>-->
+        <!--<delete dir="${delivery.dir}"/>-->
     </target>
 
-    <target name="doCreateManifest">
+    <target name="doMoveToRepository" hidden="true">
+        <echo message="moving ${delivery.file}"/>
+        <mkdir dir="${repository.dir}/${itsShortID}${packageType}/${itsVersion}"/>
+        <phingcall target="copyIfFileExist">
+            <property name="file" value="${delivery.file}"/>
+            <property name="to" value="${repository.dir}/${itsShortID}${packageType}/${itsVersion}"/>
+        </phingcall>
+        <echo message="DELETING ${temp}\${filename}"/>
+        <delete file="${temp}\${filename}"/>
+    </target>
+
+    <target name="createChangelog" hidden="true">
+        <touch file="${repository.dir}/${itsShortID}/${itsVersion}/CHANGELOG"/>
+    </target>
+
+    <target name="createChangelogFree" hidden="true">
+        <touch file="${repository.dir}/${itsShortID}-free/${itsVersion}/CHANGELOG"/>
+    </target>
+
+    <target name="doCreateManifest" hidden="true">
         <echo message="creating pkg_${itsShortID}.xml"/>
         <!--
                 <echo file="${packages.dir}/pkg_${itsShortID}.xml" append="true">
                    ideally generate this file with a template
                            </echo>
                 <copy file="pkg_${itsShortID}.xml" todir="${packages.dir}/" overwrite="true"/> -->
-        <copy file="${manifestLocation}" todir="${packages.dir}/" overwrite="true"/>
+        <copy file="${manifestLocation}" todir="${packages.dir}/" overwrite="true">
+            <filterchain refid="filterchain"/>
+        </copy>
     </target>
 
-    <target name="doLibrary">
-        <echo message="preparing ${itsLibraries}"/>
-        <copy todir="${delivery.dir}/libraries/${itsLibraries}" overwrite="true">
-            <fileset dir="./libraries/${libraryID}" includes="**/*"></fileset>
-            <filterchain>
-                <filterreader classname="preprocessor.PreProcessorFilter">
-                    <param name="premium" value="${isPremium}"/>
-                    <param name="free" value="${isFree}"/>
-                    <param name="macrodir" value="preprocessor/macros"/>
-                </filterreader>
-            </filterchain>
+    <target name="doLibrary" hidden="true">
+        <echo message="preparing ${libraryID}"/>
+        <copy todir="${delivery.dir}/libraries/${libraryID}" overwrite="true">
+            <fileset dir="${joomla.dir}/libraries/${libraryID}" includes="**/*"></fileset>
+            <filterchain refid="filterchain"/>
         </copy>
-        <echo message="packaging ${itsLibraries}"/>
+
+        <phingcall target="copyComponentLanguages">
+            <property name="file" value="lib_${libraryID}.ini"/>
+            <property name="to" value="${delivery.dir}/libraries/${libraryID}/language/"/>
+        </phingcall>
+        <phingcall target="copyComponentLanguages">
+            <property name="file" value="lib_${libraryID}.sys.ini"/>
+            <property name="to" value="${delivery.dir}/libraries/${libraryID}/language/"/>
+        </phingcall>
+
+        <!-- Optional Media -->
+        <phingcall target="copyIfDirExist">
+            <property name="from" value="${joomla.dir}/media/${libraryID}"/>
+            <property name="to" value="${delivery.dir}/libraries/${libraryID}"/>
+        </phingcall>
+
+        <echo message="packaging ${libraryID}"/>
         <zip destfile="${packages.dir}/lib_${libraryID}.zip" basedir="${delivery.dir}/libraries/${libraryID}"/>
     </target>
 
-    <target name="doComponent">
+    <target name="doComponent" hidden="true">
         <property name="componentID" value="com_${componentShortID}"/>
 
         <property name="delivery.base" value="${delivery.dir}/${componentID}/"/>
         <property name="delivery.admin" value="${delivery.base}/administrator/components/${componentID}"/>
         <property name="delivery.site" value="${delivery.base}/components/${componentID}"/>
-        <property name="base.admin" value="./administrator/components/${componentID}"/>
-        <property name="base.site" value="./components/${componentID}"/>
+        <property name="base.admin" value="${joomla.dir}/administrator/components/${componentID}"/>
+        <property name="base.site" value="${joomla.dir}/components/${componentID}"/>
 
         <echo message="preparing ${componentID}"/>
 
@@ -154,31 +322,24 @@
 
         <!-- Optional Media -->
         <phingcall target="copyIfDirExist">
-            <property name="from" value="./media/${componentID}"/>
+            <property name="from" value="${joomla.dir}/media/${componentID}"/>
             <property name="to" value="${delivery.base}/media/${componentID}"/>
+        </phingcall>
+        <!-- Optional /images/ -->
+        <phingcall target="copyIfDirExist">
+            <property name="from" value="${joomla.dir}/images/${componentID}"/>
+            <property name="to" value="${delivery.base}/images/${componentID}"/>
         </phingcall>
 
         <!-- Frontend -->
         <copy todir="${delivery.site}" overwrite="true">
             <fileset dir="${base.site}" includes="**/*.*"></fileset>
-            <filterchain>
-                <filterreader classname="preprocessor.PreProcessorFilter">
-                    <param name="premium" value="${isPremium}"/>
-                    <param name="free" value="${isFree}"/>
-                    <param name="macrodir" value="preprocessor/macros"/>
-                </filterreader>
-            </filterchain>
+            <filterchain refid="filterchain"/>
         </copy>
         <!-- Backend -->
         <copy todir="${delivery.admin}" overwrite="true">
             <fileset dir="${base.admin}" includes="**/*.*"></fileset>
-            <filterchain>
-                <filterreader classname="preprocessor.PreProcessorFilter">
-                    <param name="premium" value="${isPremium}"/>
-                    <param name="free" value="${isFree}"/>
-                    <param name="macrodir" value="preprocessor/macros"/>
-                </filterreader>
-            </filterchain>
+            <filterchain refid="filterchain"/>
         </copy>
 
         <move file="${delivery.admin}/${componentShortID}.xml" tofile="${delivery.base}/${componentShortID}.xml" overwrite="true"/>
@@ -190,30 +351,34 @@
     </target>
 
 
-    <target name="doPlugin">
+    <target name="doPlugin" hidden="true">
         <echo message="preparing plugin ${pluginID} of type ${type}"/>
 
         <!-- step 1-->
         <copy todir="${delivery.dir}/plugins/${type}/${pluginID}" overwrite="true">
-            <fileset dir="./plugins/${type}/${pluginID}" includes="**/*.*"></fileset>
-            <filterchain>
-                <filterreader classname="preprocessor.PreProcessorFilter">
-                    <param name="premium" value="${isPremium}"/>
-                    <param name="free" value="${isFree}"/>
-                    <param name="macrodir" value="preprocessor/macros"/>
-                </filterreader>
-            </filterchain>
+            <fileset dir="${joomla.dir}/plugins/${type}/${pluginID}" includes="**/*.*"></fileset>
+            <filterchain refid="filterchain"/>
         </copy>
 
         <!-- Optional Media -->
-        <phingcall target="copyIfDirExist">
-            <property name="from" value="./media/plg_${type}_${pluginID}"/>
-            <property name="to" value="${delivery.dir}/plugins/${type}/${pluginID}/plg_${type}_${pluginID}"/>
-        </phingcall>
+        <if>
+            <equals arg1="${package.buildType}" arg2="showcase" />
+            <then>
+                <phingcall target="copyIfDirExist">
+                    <property name="from" value="${joomla.dir}/media/plg_${type}_${pluginID}"/>
+                    <property name="to" value="${delivery.dir}/media/plg_${type}_${pluginID}"/>
+                </phingcall>
+            </then>
+            <else>
+                <phingcall target="copyIfDirExist">
+                    <property name="from" value="${joomla.dir}/media/plg_${type}_${pluginID}"/>
+                    <property name="to" value="${delivery.dir}/plugins/${type}/${pluginID}/plg_${type}_${pluginID}"/>
+                </phingcall>
+            </else>
+        </if>
 
         <!-- Optional Languages -->
         <!-- are copied at step 1-->
-
         <echo message="packaging plugin ${pluginID} of type ${type}"/>
         <zip destfile="${packages.dir}/plg_${type}_${pluginID}.zip" basedir="${delivery.dir}/plugins/${type}/${pluginID}">
             <fileset dir="${delivery.dir}/plugins/${type}/${pluginID}" includes="**/*"/>
@@ -221,17 +386,11 @@
     </target>
 
 
-    <target name="doModule">
+    <target name="doModule" hidden="true">
         <echo message="preparing ${moduleID}"/>
         <copy todir="${delivery.dir}/modules/${moduleID}" overwrite="true">
-            <fileset dir="./modules/${moduleID}" includes="**/*.*"></fileset>
-            <filterchain>
-                <filterreader classname="preprocessor.PreProcessorFilter">
-                    <param name="premium" value="${isPremium}"/>
-                    <param name="free" value="${isFree}"/>
-                    <param name="macrodir" value="preprocessor/macros"/>
-                </filterreader>
-            </filterchain>
+            <fileset dir="${joomla.dir}/modules/${moduleID}" includes="**/*.*"></fileset>
+            <filterchain refid="filterchain"/>
         </copy>
 
         <!-- Optional Languages -->
@@ -246,7 +405,7 @@
 
         <!-- Optional Media -->
         <phingcall target="copyIfDirExist">
-            <property name="from" value="./media/${moduleID}"/>
+            <property name="from" value="${joomla.dir}/media/${moduleID}"/>
             <property name="to" value="${delivery.dir}/modules/${moduleID}/${moduleID}"/>
         </phingcall>
 
@@ -258,54 +417,50 @@
 
 
     <!-- TODO use the same pattern directory for both, check what joomla recommend -->
-    <target name="copyComponentLanguages">
-        <foreach list="${itsLanguages}" param="language" target="copyLanguage">
-            <property name="file" value="./language/${language}/${language}.${file}"/>
+    <target name="copyComponentLanguages" hidden="true">
+        <foreach list="${itsLanguages}" param="language" target="copyIfFileExist">
+            <property name="file" value="${joomla.dir}/language/${language}/${language}.${file}"/>
             <property name="to" value="${to}/${language}"/>
         </foreach>
     </target>
 
-    <target name="copyModuleLanguages">
-        <foreach list="${itsLanguages}" param="language" target="copyLanguage">
-            <property name="file" value="./language/${language}/${language}.${file}"/>
+    <target name="copyModuleLanguages" hidden="true">
+        <foreach list="${itsLanguages}" param="language" target="copyIfFileExist">
+            <property name="file" value="${joomla.dir}/language/${language}/${language}.${file}"/>
             <property name="to" value="${to}"/>
         </foreach>
     </target>
 
-
-    <target name="copyAdminLanguages">
-        <foreach list="${itsLanguages}" param="language" target="copyLanguage">
-            <property name="file" value="./administrator/language/${language}/${language}.${file}"/>
+    <target name="copyAdminLanguages" hidden="true">
+        <foreach list="${itsLanguages}" param="language" target="copyIfFileExist">
+            <property name="file" value="${joomla.dir}/administrator/language/${language}/${language}.${file}"/>
             <property name="to" value="${delivery.base}/administrator/language/${itsLanguages}"/>
         </foreach>
     </target>
 
-    <target name="copyLanguage">
-        <phingcall target="copyIfFileExist">
-            <property name="file" value="${file}"/>
-            <property name="to" value="${to}"/>
-        </phingcall>
+    <target name="copyLanguage" hidden="true">
+        <foreach list="${itsLanguages}" param="language" target="copyIfFileExist">
+            <property name="file" value="${joomla.dir}/language/${language}/${language}.${file}"/>
+            <property name="to" value="${delivery.base}/language/${itsLanguages}"/>
+        </foreach>
     </target>
 
-    <target name="copyIfDirExist">
+    <target name="copyIfDirExist" hidden="true">
         <if>
             <available file='${from}' type='dir'/>
             <then>
                 <copy todir="${to}" overwrite="true">
+
+                    <!--TODO here build filter that prefer *.min.js and *.min.css over -js and -css
+                     or better run yuicompressor -->
                     <fileset dir="${from}" includes="**/*.*"></fileset>
-                    <filterchain>
-                        <filterreader classname="preprocessor.PreProcessorFilter">
-                            <param name="premium" value="${isPremium}"/>
-                            <param name="free" value="${isFree}"/>
-                            <param name="macrodir" value="preprocessor/macros"/>
-                        </filterreader>
-                    </filterchain>
+                    <filterchain refid="filterchain"/>
                 </copy>
             </then>
         </if>
     </target>
 
-    <target name="deleteDirIfExist">
+    <target name="deleteDirIfExist" hidden="true">
         <if>
             <available file='${dir}' type='dir'/>
             <then>
@@ -314,14 +469,61 @@
         </if>
     </target>
 
-    <target name="copyIfFileExist">
+    <target name="copyIfFileExist" hidden="true">
         <echo message="Copy if file exist ${file} to ${to}"/>
         <if>
             <available file='${file}' type='file'/>
             <then>
-                <copy file="${file}" todir="${to}" overwrite="true"/>
+                <copy file="${file}" todir="${to}" overwrite="true">
+                    <filterchain refid="filterchain"/>
+                </copy>
             </then>
         </if>
+    </target>
+
+    <target name="updateJedUpdate" hidden="true">
+        <echo message="copying ${jedUpdateFile}"/>
+        <mkdir dir="${jed.dir}"/>
+        <phingcall target="copyIfFileExist">
+            <property name="file" value="${jedUpdateFile}"/>
+            <property name="to" value="${jed.dir}"/>
+        </phingcall>
+    </target>
+
+
+    <filterchain id="filterchain">
+        <filterreader classname="preprocessor.PreProcessorFilter">
+            <param name="premium" value="${isPremium}"/>
+            <param name="free" value="${isFree}"/>
+            <param name="joomla25" value="${isJoomla25}"/>
+            <param name="joomla30" value="${isJoomla30}"/>
+
+            <param name="macrodir" value="preprocessor/macros"/>
+        </filterreader>
+        <replacetokens begintoken="%%" endtoken="%%">
+            <token key="shortId" value="${itsShortID}"/>
+            <token key="version" value="${currentVersion}"/>
+            <token key="licensedTo" value="${licensedTo}"/>
+            <token key="licenseId" value="${licenseId}"/>
+            <token key="copyright" value="${copyright}"/>
+            <token key="package" value="${package}"/>
+            <token key="subpackage" value="${subpackage}"/>
+            <token key="date" value="${DATE}"/>
+            <token key="disableForFreeVersion" value="${isFree}"/>
+            <token key="creationDate" value="${DATE}"/>
+            <token key="disabled" value="${disabled}"/>
+
+        </replacetokens>
+    </filterchain>
+
+    <fileset dir="${delivery.dir}" id="phpfiles">
+        <include name="*.php"/>
+        <include name="**/*.php"/>
+    </fileset>
+    <target name="checkSyntaxErrors" hidden="true">
+        <phplint>
+            <fileset refid="phpfiles"/>
+        </phplint>
     </target>
 
 </project>
