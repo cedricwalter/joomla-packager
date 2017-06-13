@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jedupdate version="1">
+    <core_body>
+        CedYahooWeather uses the Yahoo! Weather feed data to display selected city latest weather forecasts. Get your favorite city weather in a widget. Very easy to
+        customize and support multi-widget.
+
+        ### Features
+        ☀ Define one or more locations,
+        ☁ Uses Yahoo! WOEID indentifiers for locations
+        ☂ Choose to include background image indicating condition,
+        ☃ Displays day or night images,
+        ☀ Optionally show country, humidity, visibility, sunrise and sunset information.
+        ☁ Returns city, current temperature and condition description,
+        ☂ Choose to include high/low temperatures and wind speed.
+        ☃ Display the forecast for the next 24hrs including the current and next day.
+        ☀ Use only Javascript no Adobe Flash!
+        ☁ Optional link to read the full forecast supplied by the Weather Channel.
+        and more...
+
+        ### How to set WOEID locations
+        Search for example for Zürich at https://weather.yahoo.com, you will land on this page https://weather.yahoo.com/switzerland/canton-of-zurich/zurich-784794/ Look
+        in the url for the WOEID, in that case it is 784794 for Zürich.
+
+        ### You're part of our marketing team!
+        At Galaxiis.com we receive feedback from our customers and consistently turn their comments and suggestions into new and improved features.
+
+        ### Satisfaction Guarantee
+        If you are not totally satisfied with our product or installation, we will promptly resolve any issues. In the event you are still not completely satisfied, we
+        will refund your money.
+    </core_body>
+
+    <homepage_link>https://www.galaxiis.com/cedyahooweather-showcase/</homepage_link>
+    <download_link>https://www.galaxiis.com/cedyahooweather-download/</download_link>
+    <demo_link>https://www.galaxiis.com/cedyahooweather-demo/</demo_link>
+    <documentation_link>https://www.galaxiis.com/cedyahooweather-doc/</documentation_link>
+    <support_link>https://www.galaxiis.com/forums/</support_link>
+    <license_link>https://www.galaxiis.com/licence/</license_link>
+    <version>%%version%%</version>
+    <compatibility>
+        <version>30</version>
+    </compatibility>
+</jedupdate>

@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jedupdate version="1" xsi:noNamespaceSchemaLocation="https://www.galaxiis.com/jed/jedupdate.xsd"
+           xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <core_body>
+        Managing your image gallery has never been so simple!
+
+        ### Features
+        ✓ Display all images stored in a directory
+        ✓ Read IPTC and EXIF data to create title and descriptions
+        ✓ Automatic thumbnails creation
+        ✓ Sorting by Date using Exif data,
+        ✓ 48 settings
+        ✓ Categories to include/exclude
+        ✓ Set default image
+        ✓ Thumbnail size, style
+
+        *★ premium version only*
+        ✓ Display mindmap in module
+        ✓ Support
+
+        ### Image Gallery
+        * Display thumbnails with title and description.
+        * Galleries are displayed with smooth animation.
+        * Support pagination.
+        * Images are displayed in full view via a modal popup window.
+        * Easy and highly customizable.
+
+        ### Local, Flickr, Picasa, Google+, SmugMug
+        * All photo in a directory get published and added to your website.
+        * Support Flickr, Picasa, Google+, SmugMug sharing site.
+        * You do not need to upload images manually to your site.
+        * Display photos on your website with your custom design.
+        * Automatic thumbnail generation.
+        * Bandwidth saving and fast photo downloading.
+
+        ### Hover Effects
+        * Spice up your Portfolio with eye-catching hover effects.
+        * Effects can be combined for more possibilities. 2D/3D effects available.
+        * Build your own effects.
+        * Touchscreen friendly.
+
+        ### Multi-Level Navigation
+        * Organize your images in albums.
+        * Breadcrumb to navigate in photo albums.
+        * Unlimited number of sub-levels.
+
+        ### Mobile Friendly
+        * Touchscreen enabled and responsive.
+        * Galleries and photos are automatically resized.
+        * Download small images on small display
+        (with Flickr, Picasa, Google+ and SmugMug storage).
+
+        ### You're part of our marketing team!
+        At Galaxiis.com we receive feedback from our customers and consistently turn their comments and suggestions into new and improved features.
+
+        ### Satisfaction Guarantee
+        If you are not totally satisfied with our product or installation, we will promptly resolve any issues. In the event you are still not completely satisfied, we
+        will refund your money.
+    </core_body>
+    <homepage_link>https://www.galaxiis.com/cedgallery-showcase/</homepage_link>
+    <download_link>https://www.galaxiis.com/cedgallery-download/</download_link>
+    <demo_link>https://www.galaxiis.com/cedgallery-demo/</demo_link>
+    <documentation_link>https://www.galaxiis.com/cedgallery-doc/</documentation_link>
+    <support_link>https://www.galaxiis.com/forums/</support_link>
+    <license_link>https://www.galaxiis.com/licence/</license_link>
+    <version>%%version%%</version>
+    <compatibility>
+        <version>30</version>
+    </compatibility>
+</jedupdate>
+

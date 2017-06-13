@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jedupdate version="1">
+
+    <core_body>
+        Ever been to a site where you had to register and the registration form required that you type in the same phrase that is found in a hard-to-read image? Joomla!
+        has now this possibility thanks to my extension CedSecurityimages. It will protect You against most spammers attempt!
+
+        ### Features
+        * Support best online captcha services: Recapctha, KeyCaptcha and NuCaptcha
+        * Protect all JForm Field of all Joomla! extensions without ANY patches to Joomla! core or extensions
+        * Good and configurable captcha
+
+        ### Why using CedSecurityImages?
+        CedSecurityImages protect all Form in joomla without any hacks or Joomla core changes.
+        CedSecurityImages produce CAPTCHA (an acronym for "Completely Automated Public Turing test to tell Computers and Humans Apart") is a type of challenge-response
+        test used in computing to determine whether or not the user is human.
+
+        CAPTCHAs are used to prevent bots from using various types of computing services or collecting certain types of sensitive information. Applications include
+        preventing bots from taking part in online polls, registering for free email accounts (which may then be used to send spam) and collecting email addresses.
+
+        ### You're part of our marketing team!
+        At Galaxiis.com we receive feedback from our customers and consistently turn their comments and suggestions into new and improved features.
+
+        ### Satisfaction Guarantee
+        If you are not totally satisfied with our product or installation, we will promptly resolve any issues. In the event you are still not completely satisfied, we
+        will refund your money.
+    </core_body>
+    <homepage_link>https://www.galaxiis.com/cedsecurityimages-showcase/</homepage_link>
+    <download_link>https://www.galaxiis.com/cedsecurityimages-download/</download_link>
+    <demo_link>https://www.galaxiis.com/cedsecurityimages-demo/</demo_link>
+    <documentation_link>https://www.galaxiis.com/cedsecurityimages-doc/</documentation_link>
+    <support_link>https://www.galaxiis.com/forums/</support_link>
+    <license_link>https://www.galaxiis.com/licence/</license_link>
+    <version>%%version%%</version>
+    <compatibility>
+        <version>30</version>
+    </compatibility>
+</jedupdate>

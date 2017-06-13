@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jedupdate version="1" xsi:noNamespaceSchemaLocation="https://www.galaxiis.com/jed/jedupdate.xsd"
+           xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <core_body>
+        CedGoogleAjaxCDN use content distribution network (CDN) for loading the most popular open-source JavaScript libraries. The Google Hosted Libraries provides your
+        applications with stable, reliable, high-speed, globally available access to all of the most popular, open-source JavaScript libraries. By using this network your
+        site will gain speed as user will load library only once for all and from the fastest and closest local server!
+
+        ### You get more speed because
+        * Decreased latency: jquery, bootstrap wont be loaded from your site but from google servers
+        * Increased parallelism: Using the Google AJAX Libraries CDN eliminates one request to your site, allowing more of your local content to downloaded in parallel!
+        * Better caching: when a browser sees references to CDN-hosted copies of libraries, it understands that all of those references do refer to the exact same file
+        and wont load them multiple times
+
+        ### Features
+        ✓ Use Google Hosted Libraries
+        ✓ Replace major version of Javascript librariries
+        ✓ Bootstrap
+        ✓ Mootols
+        ✓ Jquery
+        ✓ Both for frontend and backend
+
+        ### You're part of our marketing team!
+        At Galaxiis.com we receive feedback from our customers and consistently turn their comments and suggestions into new and improved features.
+
+        ### Satisfaction Guarantee
+        If you are not totally satisfied with our product or installation, we will promptly resolve any issues. In the event you are still not completely satisfied, we
+        will refund your money.
+    </core_body>
+    <homepage_link>https://www.galaxiis.com/cedgoogleajaxcdn-showcase/</homepage_link>
+    <download_link>https://www.galaxiis.com/cedgoogleajaxcdn-download/</download_link>
+    <demo_link>https://www.galaxiis.com/cedgoogleajaxcdn-demo/</demo_link>
+    <documentation_link>https://www.galaxiis.com/cedgoogleajaxcdn-doc/</documentation_link>
+    <support_link>https://www.galaxiis.com/forums/</support_link>
+    <license_link>https://www.galaxiis.com/licence/</license_link>
+    <version>%%version%%</version>
+    <compatibility>
+        <version>30</version>
+    </compatibility>
+</jedupdate>

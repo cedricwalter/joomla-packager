@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jedupdate version="1">
+    <core_body>
+        CedStockMarketWatch is THE widget to display stock market data in joomla!
+
+        ### With this widget you can choose to display stock market prices and quotes values from Yahoo Finance
+        * What you can display
+        * Historical quotes of financial products
+        * Technical analysing chart images
+        * Sector, industry and company informations
+        * Company Statistics
+        * Company Profiles
+        * Up to 88 quote properties
+        * Indicator calculation for:
+        ** Moving Average
+        ** Exponential Moving Average
+        ** Envelopes
+        ** Bollinger Bands
+        ** Moving Average Convergence Divergence
+        ** Standard Deviation
+        ** Momentum
+        ** Rate of Change
+        ** Relative Strength Index
+        ** Williams Percent Range
+
+        ### Features
+        ✓ Unlimited stock codes,
+        ✓ Responsive design: support mobile, phone and desktop browser,
+        ✓ 83 technical indicators to select,
+        ✓ Single or comparative view of stocks,
+        ✓ Time span 1/5 Days, 3/6 Months, 1/2/5/more Years,
+        ✓ 3 chart Type: Line, Bar and Candle,
+        ✓ 2 chart scale: logarithmic or arithmetic,
+        ✓ Define your own chart width and height,
+        ✓ Moving average indicator supported,
+        ✓ Exponential moving indicator supported,
+
+        ### You're part of our marketing team!
+        At Galaxiis.com we receive feedback from our customers and consistently turn their comments and suggestions into new and improved features.
+
+        ### Satisfaction Guarantee
+        If you are not totally satisfied with our product or installation, we will promptly resolve any issues. In the event you are still not completely satisfied, we
+        will refund your money.
+    </core_body>
+    <homepage_link>https://www.galaxiis.com/cedstockmarketwatch-showcase/</homepage_link>
+    <download_link>https://www.galaxiis.com/cedstockmarketwatch-download/</download_link>
+    <demo_link>https://www.galaxiis.com/cedstockmarketwatch-demo/</demo_link>
+    <documentation_link>https://www.galaxiis.com/cedstockmarketwatch-doc/</documentation_link>
+    <support_link>https://www.galaxiis.com/forums/</support_link>
+    <license_link>https://www.galaxiis.com/licence/</license_link>
+    <version>%%version%%</version>
+    <compatibility>
+        <version>30</version>
+    </compatibility>
+</jedupdate>

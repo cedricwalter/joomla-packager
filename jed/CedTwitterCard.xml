@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jedupdate version="1">
+    <core_body>
+        CedTwitterCards gives users greater context and insight into the URLs shared on Twitter, which in turn allows Twitter to send more engaged traffic to your site or
+        app. Twitter cards make it possible for you to attach media experiences to Tweets that link to your content. Simply add a few lines of HTML to your webpages, and
+        users who Tweet links to your content will have a "card" added to the Tweet that’s visible to all of their followers..
+        Improve representation of your content within Tweets across the web and on mobile devices.
+
+        In addition to displaying your content in a more engaging way, CedTwitterCards can also drive downloads of your mobile applications. you'll be able to specify
+        downloads for users who've not yet installed your app on their device.
+
+        This will work across iPhone, iPad, and Android (Google Play). Please note that if you have an iPhone app, but no iPad-optimized app, you should include the
+        iPhone app id, name, and url for both iPhone and iPad-related tags.
+        When no value is provided, the Cards will simply render a "View on web" link pointing title, description, thumbnail are automatically taken from the current
+        article without any user intervention
+
+        The Summary Card can be used for many kinds of web content, from blog posts and news articles, to products and restaurants.
+
+        What happens when I remove a comment? Removing a Google+ comment will only affect the comment in the particular location you removed it from. For example, someone
+        might create a public Google+ post that links to your blog post -- and since it links to your blog post, it'll show up as a comment on your blog. You can remove
+        the instance of this post from your blog, but your removal won't affect the original post from showing up on Google+.
+
+        ### Features
+        ✓ Display your content in a more engaging way
+        ✓ Add Summary Card (Default card), that include a title, description, thumbnail, and Twitter account attribution
+        ✓ Get the description text from introduction text and or full text
+        ✓ Support Joomla publisher and authors
+        ✓ Attach media experiences to Tweets that link to your content.
+        ✓ Users who Tweet links to your content will have a "card" added to the Tweet that’s visible to all of their followers.
+        ✓ Automatic thumbnails detection and generation
+        ✓ Description origin configurable
+        ✓ Thumbnails origin configurable
+        ✓ Add iOS Application download link
+        ✓ Add Android Application download link
+        ✓ Deep-link into your own iOS/Android app
+
+        ### You're part of our marketing team!
+        We receive feedback from our customers and consistently turn their comments and suggestions into new and improved features.
+
+        ### Satisfaction Guarantee
+        If you are not totally satisfied with our product or installation, we will promptly resolve any issues. In the event you are still not completely satisfied, we
+        will refund your money.
+    </core_body>
+    <homepage_link>https://www.galaxiis.com/cedtwittercard-showcase/</homepage_link>
+    <download_link>https://www.galaxiis.com/cedtwittercard-download/</download_link>
+    <demo_link>https://www.galaxiis.com/cedtwittercard-demo/</demo_link>
+    <documentation_link>https://www.galaxiis.com/cedtwittercard-doc/</documentation_link>
+    <support_link>https://www.galaxiis.com/forums/</support_link>
+    <license_link>https://www.galaxiis.com/licence/</license_link>
+    <version>%%version%%</version>
+    <compatibility>
+        <version>30</version>
+    </compatibility>
+</jedupdate>

@@ -1,0 +1,40 @@
+<?xml version="1.0"?>
+<project name="joomla-packager" default="build" basedir=".">
+
+    <import file="./joomla-packager.xml"/>
+
+    <property name="copyright" value="Copyright (C) 2013-2017 galaxiis.com All rights reserved."/>
+    <property name="itsVersion" value="3.5.0"/>
+    <property name="itsShortID" value="cedsocialsharinglive"/>
+    <property name="package" value="CedSocialSharingLive"/>
+    <property name="subpackage" value="com_cedsocialsharinglive"/>
+
+    <property name="jedUpdateFile" value="./jed/CedSocialSharingLive.xml"/>
+
+    <property name="joomlaID" value="j30_j31_j32_j33_j34"/>
+
+    <property name="itsComponents" value=""/> <!--without com -->
+    <property name="itsLibraries" value="galaxiis"/>
+    <property name="itsModules" value="mod_cedsocialsharinglive,mod_cedclassysocial"/>
+    <property name="itsAuthenticationPlugins" value=""/>
+    <property name="itsContentPlugins" value="cedsocialsharinglive"/>
+    <property name="itsCedXMapPlugins" value=""/>
+    <property name="itsCaptchaPlugins" value=""/>
+    <property name="itsEditorsPlugins" value=""/>
+    <property name="itsEditorsXtdPlugins" value=""/>
+    <property name="itsExtensionPlugins" value=""/>
+    <property name="itsInstallerPlugins" value="galaxiis"/>
+    <property name="itsFinderPlugins" value=""/>
+    <property name="itsQuickiconPlugins" value=""/>
+    <property name="itsSearchPlugins" value=""/>
+    <property name="itsSystemPlugins" value=""/>
+    <property name="itsUserPlugins" value=""/>
+    <property name="itsLanguages" value="en-GB"/>
+    <property name="itsXmlrpcPlugins" value=""/>
+
+    <!-- temporary -->
+    <property name="manifestLocation" value="manifest/pkg_cedsocialsharinglive.xml"/>
+
+    <property name="temp" value="c:\temp"/>
+
+</project>

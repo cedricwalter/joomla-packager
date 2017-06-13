@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jedupdate version="1" xsi:noNamespaceSchemaLocation="https://www.galaxiis.com/jed/jedupdate.xsd"
+           xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <core_body>
+        CedFlipCountdown add a widgetto display a Clock or Timer plugin in retro flip-count down style.
+
+        ★ Can display the time,
+        ★ Can display a counter,
+        ★ Can display a countdown to a specific date,
+        ★ Support AM/PM time format,
+        ★ 4 different size
+        ★ Use only Javascript no Adobe Flash!
+        ★ Use JQuery version from Joomla
+        and more...
+
+        ### You're part of our marketing team!
+        At Galaxiis.com we receive feedback from our customers and consistently turn their comments and suggestions into new and improved features.
+
+        ### Satisfaction Guarantee
+        If you are not totally satisfied with our product or installation, we will promptly resolve any issues. In the event you are still not completely satisfied, we will refund your money.
+    </core_body>
+    <homepage_link>https://www.galaxiis.com/cedflipcountdown-showcase/</homepage_link>
+    <download_link>https://www.galaxiis.com/cedflipcountdown-download/</download_link>
+    <demo_link>https://www.galaxiis.com/cedflipcountdown-demo/</demo_link>
+    <documentation_link>https://www.galaxiis.com/cedflipcountdown-doc/</documentation_link>
+    <support_link>https://www.galaxiis.com/forums/</support_link>
+    <license_link>https://www.galaxiis.com/licence/</license_link>
+    <version>%%version%%</version>
+    <compatibility>
+        <version>30</version>
+    </compatibility>
+
+    <!-- ### Video
+    [Features video](http://cedricwalter.smugmug.com/Computers/Joomla/22427539_bNqVWC#!i=1792989446&amp;k=726WRdK&amp;lb=1&amp;s=A)
+    [Usage video](http://cedricwalter.smugmug.com/Computers/Joomla/22427539_bNqVWC#!i=1792994272&amp;k=MKLmCMX&amp;lb=1&amp;s=A) -->
+</jedupdate>

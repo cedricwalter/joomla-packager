@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<extension type="package" version="3.0" method="upgrade">
+    <name>%%package%% | Galaxiis.com</name>
+
+    #if free
+    <packagename>%%shortId%%-free</packagename>
+    #endif
+    #if premium
+    <packagename>%%shortId%%</packagename>
+    #endif
+
+    <creationDate>%%creationDate%%</creationDate>
+    <author>Galaxiis, Yoshiki Kozaki</author>
+    <authorEmail>galaxiiscom@gmail.com;info@joomler.net</authorEmail>
+    <authorUrl>http://www.galaxiis.com, http://www.joomler.net</authorUrl>
+    <copyright>%%copyright%% (C) 2007 - 2013 Yoshiki Kozaki All rights reserved.</copyright>
+    <license>http://www.gnu.org/licenses/gpl-2.0.html GNU/GPL</license>
+    <version>%%version%%</version>
+
+    <packager>Galaxiis</packager>
+    <packagerurl>http://www.galaxiis.com</packagerurl>
+    <files>
+        <file type="plugin" id="rsd" group="system">plg_system_rsd.zip</file>
+        <file type="plugin" id="joomla" group="xmlrpc">plg_xmlrpc_joomla.zip</file>
+        <file type="component" id="com_xmlrpc">com_xmlrpc.zip</file>
+
+        <file type="library" id="galaxiis">lib_galaxiis.zip</file>
+        <file type="library" id="cedxmlrpc">lib_cedxmlrpc.zip</file>
+
+        <file type="plugin" id="galaxiis" group="installer">plg_installer_galaxiis.zip</file>
+    </files>
+
+    <updateservers>
+        <!-- 1. ideally the redirect 301/302 is better but has some restriction with curl. open_basedir -->
+        <!--<server name="Galaxiis Update Directory" priority="1" type="collection">https://www.galaxiis.com/update.xml</server>-->
+
+        <!-- this dont work better, same as 1 without redirect -->
+        <!--<server name="Galaxiis Update Directory" priority="1" type="collection"><![CDATA[https://www.galaxiis.com/index.php/component/ars/updates/packages?format=xml&dummy=extension.xml]]></server>-->
+
+        <server name="%%package%% Update" priority="2" type="extension"><![CDATA[https://www.galaxiis.com/index.php/component/ars/updates/packages/%%shortId%%%%packageType%%?format=xml&dummy=extension.xml]]></server>
+    </updateservers>
+</extension>

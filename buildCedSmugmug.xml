@@ -1,47 +1,44 @@
 <?xml version="1.0"?>
-<!--
-/**
- * cedtag Copyright (C) 2012 Cédric Walter - www.waltercedric.com
- *
- * This program comes with ABSOLUTELY NO WARRANTY; for details type `show w'.
- * This is free software, and you are welcome to redistribute it under certain
- * conditions; type `show c' for details.
- *
- * @author Cédric Walter - www.waltercedric.com
- *
- * http://www.phing.info/docs/guide/stable/
- */
- -->
 <project name="build" default="build" basedir=".">
 
     <import file="./joomla-packager.xml"/>
 
-    <property name="itsVersion" value="2.6.2"/>
+    <property name="copyright" value="Copyright (C) 2013-2017 galaxiis.com All rights reserved."/>
+    <property name="itsVersion" value="3.2.6"/>
     <property name="itsShortID" value="cedsmugmug"/>
+    <property name="package" value="CedSmugMug"/>
+    <property name="subpackage" value="com_cedsmugmug"/>
+
+    <property name="jedUpdateFile" value="./jed/CedSmugMug.xml"/>
 
     <!-- j25, j30 or anything else -->
-    <property name="joomlaID" value="j25"/>
+    <property name="joomlaID" value="j30_j31_j32_j33_j34"/>
 
     <!--- tokenized list of name separated by , if none apply leave empty-->
     <property name="itsComponents" value="cedsmugmug"/>
-    <property name="itsLibraries" value=""/>
-    <property name="itsModules" value="mod_smugmugbadge,mod_smugmugrandom,mod_smugmugslideshow,mod_smugmugvideo"/>
+    <property name="itsLibraries" value="galaxiis,cedsmugmug"/>
+    <property name="itsModules" value="mod_cedsmugmugbadge,mod_cedsmugmugrandom,mod_cedsmugmugslideshow,mod_cedsmugmugvideo,mod_cedsmugmuggallery"/>
     <property name="itsAuthenticationPlugins" value=""/>
-    <property name="itsContentPlugins" value="smugmugrandom,smugmugslideshow"/>
+    <property name="itsCedXMapPlugins" value=""/>
+    <property name="itsContentPlugins" value="cedsmugmugrandom,cedsmugmugslideshow,cedsmugmugvideo,cedsmugmugbadge"/>
     <property name="itsCaptchaPlugins" value=""/>
     <property name="itsEditorsPlugins" value=""/>
-    <property name="itsEditorsXtdPlugins" value="smugmugrandom,smugmugslideshow"/>
+    <property name="itsEditorsXtdPlugins" value="cedsmugmugrandom,cedsmugmugslideshow,cedsmugmugvideo,cedsmugmugbadge"/>
     <property name="itsExtensionPlugins" value=""/>
+    <property name="itsInstallerPlugins" value="galaxiis"/>
     <property name="itsFinderPlugins" value=""/>
     <property name="itsQuickiconPlugins" value=""/>
     <property name="itsSearchPlugins" value=""/>
     <property name="itsSystemPlugins" value=""/>
     <property name="itsUserPlugins" value=""/>
     <property name="itsLanguages" value="en-GB"/>
-
-    <property name="temp" value="c:\temp"/>
+    <property name="itsXmlrpcPlugins" value=""/>
 
     <!-- temporary -->
-    <property name="manifestLocation" value="pkg_cedsmugmug.xml"/>
+
+    <property name="githubFolder" value="C:\Users\cedric\Documents\Github\CedSmugMug"/>
+    <property name="manifestLocation" value="manifest/pkg_cedsmugmug.xml"/>
+
+    <property name="temp" value="c:\temp"/>
 
 </project>

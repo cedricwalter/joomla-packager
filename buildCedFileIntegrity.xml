@@ -10,40 +10,35 @@
     <property name="licenseId" value="1c7395e0-dce7-11e3-8b68-0800200c9a66"/>
     -->
 
-    <!-- my dlid cb7db0ebd0048f24f90332c536cb6ae5 -->
-
     <property name="licensedTo" value="Licensed"/>
     <property name="licenseId" value="1c7495e0-ayx7-11e3-8b68-0800200c9a66"/>
 
-    <property name="copyright" value="CedThumbnails 3.1.6 - Copyright (C) 2013-2017 galaxiis.com All rights reserved."/>
-    <property name="itsVersion" value="3.1.6"/>
+    <property name="copyright" value="Copyright (C) 2013-2017 galaxiis.com All rights reserved."/>
+    <property name="itsVersion" value="1.0.0"/>
+    <property name="itsShortID" value="cedfileintegrity"/>
+    <property name="package" value="CedFileIntegrity"/>
+    <property name="subpackage" value="com_cedfileintegrity"/>
+    <property name="itsInstallerPlugins" value="galaxiis"/>
 
-    <!--  _BETA for beta releases, _RC for Release Candidates -->
-    <property name="itsMaturity" value="_BETA"/>
-    <property name="itsShortID" value="cedthumbnails"/>
-    <property name="package" value="CedThumbnails"/>
-    <property name="subpackage" value="com_cedthumbnails"/>
-
-    <property name="jedUpdateFile" value="./jed/CedThumbnails.xml"/>
+    <property name="jedUpdateFile" value="./jed/CedFileIntegrity.xml"/>
 
     <!-- j25, j30 or anything else -->
     <property name="joomlaID" value="j32_j33_j34"/>
 
     <!--- tokenized list of name separated by , if none apply leave empty-->
-    <property name="itsComponents" value="cedthumbnails"/> <!--without com -->
+    <property name="itsComponents" value="cedfileintegrity"/> <!--without com -->
 
     <!-- Name of directories from /libraries/ separated by , if none apply leave empty -->
     <property name="itsLibraries" value="galaxiis"/>
 
     <!-- Name of directories from /modules/ separated by , if none apply leave empty -->
-    <property name="itsModules" value="mod_articles_latest_thumb,mod_articles_popular_thumb,mod_related_items_thumb"/>
+    <property name="itsModules" value=""/>
 
     <!-- Name of directories from /plugins/authentification/ separated by , if none apply leave empty -->
     <property name="itsAuthenticationPlugins" value=""/>
-    <property name="itsCedXMapPlugins" value=""/>
 
     <!-- Name of directories from /plugins/content/ separated by , if none apply leave empty -->
-    <property name="itsContentPlugins" value="relatedthumbarticles"/>
+    <property name="itsContentPlugins" value=""/>
 
     <!-- Name of directories from /plugins/captcha/ separated by , if none apply leave empty -->
     <property name="itsCaptchaPlugins" value=""/>
@@ -52,18 +47,16 @@
     <property name="itsEditorsPlugins" value=""/>
     <property name="itsEditorsXtdPlugins" value=""/>
     <property name="itsExtensionPlugins" value=""/>
-    <property name="itsInstallerPlugins" value="galaxiis"/>
     <property name="itsFinderPlugins" value=""/>
     <property name="itsQuickiconPlugins" value=""/>
     <property name="itsSearchPlugins" value=""/>
     <property name="itsSystemPlugins" value=""/>
     <property name="itsUserPlugins" value=""/>
-    <property name="itsLanguages" value="en-GB,fr-FR"/>
+    <property name="itsLanguages" value="en-GB"/>
     <property name="itsXmlrpcPlugins" value=""/>
 
     <!-- temporary -->
-    <property name="githubFolder" value="C:\Users\cedric\Documents\Github\CedThumbnails"/>
-    <property name="manifestLocation" value="manifest/pkg_cedthumbnails.xml"/>
+    <property name="manifestLocation" value="manifest/pkg_cedfileintegrity.xml"/>
 
     <property name="temp" value="c:\temp"/>
 

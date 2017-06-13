@@ -1,0 +1,55 @@
+<?xml version="1.0"?>
+<project name="joomla-packager" default="build" basedir=".">
+
+    <import file="./joomla-packager.xml"/>
+
+    <property name="copyright" value="Copyright (C) 2013-2017 galaxiis.com All rights reserved."/>
+    <property name="itsVersion" value="3.0.0"/>
+    <property name="itsShortID" value="cedfacebookcomments"/>
+    <property name="package" value="CedFacebookComments"/>
+    <property name="subpackage" value="com_cedfacebookcomments"/>
+
+    <property name="jedUpdateFile" value="./jed/CedFacebookComments.xml"/>
+
+    <!-- j25, j30 or anything else -->
+    <property name="joomlaID" value="j33_j34"/>
+
+    <!--- tokenized list of name separated by , if none apply leave empty-->
+    <property name="itsComponents" value=""/> <!--without com -->
+    <property name="itsLibraries" value="galaxiis"/>
+    <property name="itsModules" value=""/>
+    <property name="itsAuthenticationPlugins" value=""/>
+    <property name="itsContentPlugins" value="cedfacebookcomments"/>
+    <property name="itsCedXMapPlugins" value=""/>
+    <property name="itsCaptchaPlugins" value=""/>
+    <property name="itsEditorsPlugins" value=""/>
+    <property name="itsInstallerPlugins" value="galaxiis"/>
+    <property name="itsEditorsXtdPlugins" value=""/>
+    <property name="itsExtensionPlugins" value=""/>
+    <property name="itsFinderPlugins" value=""/>
+    <property name="itsQuickiconPlugins" value=""/>
+    <property name="itsSearchPlugins" value=""/>
+    <property name="itsSystemPlugins" value=""/>
+    <property name="itsUserPlugins" value=""/>
+    <property name="itsLanguages" value="en-GB"/>
+    <property name="itsXmlrpcPlugins" value=""/>
+
+    <!-- temporary -->
+    <property name="manifestLocation" value="manifest/pkg_cedfacebookcomments.xml"/>
+
+    <property name="temp" value="c:\temp"/>
+
+    <property name="distribution" value="/home/galaxiis.com/httpdocs/repository/cedfacebookcomments"/>
+    <property name="distribution-free" value="/home/galaxiis.com/httpdocs/repository/cedfacebookcomments-free"/>
+
+    <!--
+    rewrite /cedfacebookcomments-download http://www.galaxiis.com/index.php?option=com_ars&view=category&id=1&Itemid=236 permanent;
+    rewrite /cedfacebookcomments-doc http://confluence.galaxiis.com/display/GAL/cedFacebookComments permanent;
+    rewrite /cedfacebookcomments-subscribe http://www.galaxiis.com/index.php?option=com_akeebasubs&view=level&slug=cedfacebookcomments-1-year&format=html&layout=default&Itemid=157 permanent;
+    rewrite /cedfacebookcomments-demo http://showcase.galaxiis.com/ permanent;
+    rewrite /cedfacebookcomments-showcase http://www.galaxiis.com/index.php?option=com_content&view=article&id=53&Itemid=255 permanent;
+-->
+
+
+</project>
+

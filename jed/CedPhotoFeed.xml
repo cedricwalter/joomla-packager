@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jedupdate version="1">
+    <core_body>
+        CedPhotoFeed allow you to inline a set of images from your favorite online gallery: Smugmug, Flickr, Picasa, Gallery2/Gallery3 and YouTube or any rss feed in any
+        article.
+
+        ### Features
+        ✓ Insert ANYWHERE in Joomla a stream of images from SmugMug, Flickr, YouTube or Gallery3
+        ✓ Support also any media RSS feed
+        ✓ LightBox, Shadowbox or Rokbox are supported
+        ✓ Images can be sorted on the fly out of the rss feed using Exif
+        ✓ RSS feed can be cached for more performances,
+        ✓ Localization support,
+
+        ### You're part of our marketing team!
+        At Galaxiis.com we receive feedback from our customers and consistently turn their comments and suggestions into new and improved features.
+
+        ### Satisfaction Guarantee
+        If you are not totally satisfied with our product or installation, we will promptly resolve any issues. In the event you are still not completely satisfied, we
+        will refund your money.
+    </core_body>
+    <homepage_link>https://www.galaxiis.com/cedphotofeed-showcase/</homepage_link>
+    <download_link>https://www.galaxiis.com/cedphotofeed-download/</download_link>
+    <demo_link>https://www.galaxiis.com/cedphotofeed-demo/</demo_link>
+    <documentation_link>https://www.galaxiis.com/cedphotofeed-doc/</documentation_link>
+    <support_link>https://www.galaxiis.com/forums/</support_link>
+    <license_link>https://www.galaxiis.com/licence/</license_link>
+    <version>%%version%%</version>
+    <compatibility>
+        <version>30</version>
+    </compatibility>
+</jedupdate>
+

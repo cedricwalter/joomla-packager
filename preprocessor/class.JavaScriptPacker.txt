@@ -1,0 +1,16 @@
+PHP Version of the Dean Edwards 's Packer de Dean Edwards, a JavaScript Compressor/Obfuscator.
+
+Licence
+
+LGPL 2.1
+
+Download
+
+download packer.php-1.1.zip
+
+Need PHP 5 . Tested under PHP 5.1.2, 5.1.3, 5.1.4, 5.2.3.
+New : an adaptation for PHP 4 is now available too in the archive.
+
+date : 2008-04-09
+See the source for the usage details, as well as the 2 examples in the archive.
+For more precisions, see the usage page of Dean Edwards.

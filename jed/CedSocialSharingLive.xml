@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jedupdate version="1">
+<core_body>
+This plugin add automatically to any article a set of social icons that let your reader increase your social ranking.
+It support
+★ Twitter
+★ Facebook
+★ Digg
+★ Linkedin social network Share button.
+★ Xing
+★ StumbleUpon 
+★ Pinterest
+
+Choose which buttons to show and where to show them in your Joomla com_content. Include or exclude specific articles, sections or categories. Your visitors still stay on your site, so you do not loose visitors to other sites. 
+
+### Features
+★ All button display a counter based on your settings
+★ Run with NO 3rd party providers like ShareThis for example, only         use official providers (Google, facebook and so on)
+★ Ability to turn on and turn off the desired networks.
+★ Ability to define the visibility in the desired category articles.
+★ Ability to define on top or bottom of the article.
+★ Ability to show on frontpage.
+
+Multiple position are possible within your articles
+★ left, right: in the margin of your articles
+★ left-full, right-full: take whole line
+★ floating
+
+### You're part of our marketing team!
+We receive feedback from our customers and consistently turn their comments and suggestions into new and improved features.
+
+### Satisfaction Guarantee
+If you are not totally satisfied with our product or installation, we will promptly resolve any issues. In the event you are still not completely satisfied, we will refund your money.
+</core_body>
+
+<homepage_link>https://www.galaxiis.com/cedsocialsharinglive-showcase/</homepage_link>
+<download_link>https://www.galaxiis.com/cedsocialsharinglive-download/</download_link>
+<demo_link>https://www.galaxiis.com/cedsocialsharinglive-demo/</demo_link>
+<documentation_link>https://www.galaxiis.com/cedsocialsharinglive-doc/</documentation_link>
+<support_link>https://www.galaxiis.com/forums/</support_link>
+<license_link>https://www.galaxiis.com/licence/</license_link>
+
+    <version>%%version%%</version>
+
+<compatibility>
+    <version>25</version>
+    <version>30</version>
+    <version>31</version>
+    <version>32</version>
+    <version>33</version>
+</compatibility>
+</jedupdate>

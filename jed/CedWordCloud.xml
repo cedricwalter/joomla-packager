@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jedupdate version="1">
+    <core_body>
+        CedWordCloud display a tagcloud in an innovative way. The clouds give greater prominence to words that appear more frequently. You can tweak your clouds with different fonts, layouts, and color schemes.
+
+        ★ Tag cloud/Wordle presentation on 2D canvas or HTML5,
+        ★ Works on HTML pages,
+        ★ Mobile ready,
+        ★ Display Joomla Popular Tag or similar Tag,
+        ★ Choose percentage of text rotation ratio,
+        ★ Display Joomla Popular Tag or similar Tag,
+        ★ 8 Shapes: square, circle, heart, star, ...
+        ★ 14 fonts,
+        ★ 2 themes color, light or dark colors,
+        ★ Cross Browser Support,
+        and more...
+
+        ### You're part of our marketing team!
+        At Galaxiis.com we receive feedback from our customers and consistently turn their comments and suggestions into new and improved features.
+
+        ### Satisfaction Guarantee
+        If you are not totally satisfied with our product or installation, we will promptly resolve any issues. In the event you are still not completely satisfied, we will refund your money.
+    </core_body>
+    <homepage_link>https://www.galaxiis.com/cedwordcloud-showcase/</homepage_link>
+    <download_link>https://www.galaxiis.com/cedwordcloud-download/</download_link>
+    <demo_link>https://www.galaxiis.com/cedwordcloud-demo/</demo_link>
+    <documentation_link>https://www.galaxiis.com/cedwordcloud-doc/</documentation_link>
+    <support_link>https://www.galaxiis.com/forums/</support_link>
+    <license_link>https://www.galaxiis.com/licence/</license_link>
+    <version>%%version%%</version>
+    <compatibility>
+        <version>30</version>
+    </compatibility>
+</jedupdate>

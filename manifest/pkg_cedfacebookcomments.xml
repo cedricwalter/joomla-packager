@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<extension type="package" version="3.4" method="upgrade">
+    <name>%%package%% | Galaxiis.com</name>
+
+    #if free
+    <packagename>%%shortId%%-free</packagename>
+    #endif
+    #if premium
+    <packagename>%%shortId%%</packagename>
+    #endif
+
+    <author>Galaxiis</author>
+    <authorEmail>galaxiiscom@gmail.com</authorEmail>
+    <authorUrl>www.galaxiis.com</authorUrl>
+    <creationDate>%%creationDate%%</creationDate>
+    <version>%%version%%</version>
+    <copyright>%%copyright%%</copyright>
+    #if free
+    <license>http://www.gnu.org/licenses/gpl-3.0.html GNU/GPL 3.0</license>
+    #endif
+    #if premium
+    <license>http://confluence.galaxiis.com/display/GAL/SOFTWARE+LICENSE+AGREEMENT</license>
+    #endif
+    <packager>Galaxiis</packager>
+    <packagerurl>http://www.galaxiis.com</packagerurl>
+
+    <description>PLG_CONTENT_CEDFREEMIND_DESCRIPTION</description>
+
+    <files>
+        <file type="plugin" id="cedfacebookcomments" group="content">plg_content_cedfacebookcomments.zip</file>
+        <file type="library" id="galaxiis">lib_galaxiis.zip</file>
+        <file type="plugin" id="galaxiis" group="installer">plg_installer_galaxiis.zip</file>
+    </files>
+
+    <updateservers>
+        <!-- 1. ideally the redirect 301/302 is better but has some restriction with curl. open_basedir -->
+        <!--<server name="Galaxiis Update Directory" priority="1" type="collection">https://www.galaxiis.com/update.xml</server>-->
+
+        <!-- this dont work better, same as 1 without redirect -->
+        <!--<server name="Galaxiis Update Directory" priority="1" type="collection"><![CDATA[https://www.galaxiis.com/index.php/component/ars/updates/packages?format=xml&dummy=extension.xml]]></server>-->
+
+        <server name="%%package%% Update" priority="2" type="extension"><![CDATA[https://www.galaxiis.com/index.php/component/ars/updates/packages/%%shortId%%%%packageType%%?format=xml&dummy=extension.xml]]></server>
+    </updateservers>
+</extension>

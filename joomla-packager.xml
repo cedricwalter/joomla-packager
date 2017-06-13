@@ -16,11 +16,15 @@
     <!-- http://www.zachleat.com/web/using-phing-to-automate-javascript-and-css-minimization/ -->
     <taskdef classname="yuicompressor.yuicompressorTask" name="yuicompressor"/>
 
+    <target name="update.Jed" description="updateJedUpdate"
+            depends="updateJedUpdate">
+    </target>
+
     <target name="package.all" description="build all package"
-            depends="clean,package.premium30,package.premium25,package.free30,package.free25">
+            depends="clean,package.premium,package.free">
     </target>
 
-    <target name="package.premium30" description="build the package">
+    <target name="package.premium" description="build the package">
         <phingcall target="build">
             <property name="packageType" value=""/>
             <property name="isJoomla30" value="1"/>
@@ -34,41 +38,12 @@
             <property name="phase" value="package"/>
         </phingcall>
     </target>
-    <target name="package.premium25" description="build the package">
-        <phingcall target="build">
-            <property name="packageType" value=""/>
-            <property name="isJoomla30" value="0"/>
-            <property name="isJoomla25" value="1"/>
-            <property name="joomlaID" value="j25"/>
-
-            <property name="isPremium" value="1"/>
-            <property name="isFree" value="0"/>
-            <property name="disabled" value="false"/>
-
-            <property name="phase" value="package"/>
-        </phingcall>
-    </target>
-
-    <target name="package.free30" description="build the package">
+    <target name="package.free" description="build the package">
         <phingcall target="build">
             <property name="packageType" value="-free"/>
             <property name="isJoomla30" value="1"/>
             <property name="isJoomla25" value="0"/>
             <property name="joomlaID" value="j33_j34"/>
-
-            <property name="isPremium" value="0"/>
-            <property name="isFree" value="1"/>
-            <property name="disabled" value="true"/>
-
-            <property name="phase" value="package"/>
-        </phingcall>
-    </target>
-    <target name="package.free25" description="build the package">
-        <phingcall target="build">
-            <property name="packageType" value="-free"/>
-            <property name="isJoomla30" value="0"/>
-            <property name="isJoomla25" value="1"/>
-            <property name="joomlaID" value="j25"/>
 
             <property name="isPremium" value="0"/>
             <property name="isFree" value="1"/>
@@ -112,9 +87,6 @@
     </target>
 
     <target name="build" depends="clean" hidden="true">
-        <property name="currentVersion" value="${itsVersion}"/>
-        <!--<property name="currentVersion" value="${itsVersion}${packageType}"/>-->
-
         <property name="filename" value="pkg_${itsShortID}_${joomlaID}_${itsVersion}${packageType}.zip"/>
         <property name="delivery.dir" value="${temp}\${itsShortID}_${itsVersion}${packageType}"/>
         <property name="packages.dir" value="${temp}\pkg_${itsShortID}_${joomlaID}_${itsVersion}${packageType}"/>
@@ -135,6 +107,7 @@
                 <phingcall target="doMoveToRepository"/>
                 <phingcall target="createChangelog"/>
                 <phingcall target="updateJedUpdate"/>
+                <phingcall target="updateGithub"/>
             </then>
         </if>
     </target>
@@ -154,11 +127,6 @@
             <property name="from" value="components/com_${itsShortID}"/>
             <property name="to" value="${showcase.dir}/components/com_${itsShortID}"/>
         </phingcall>
-
-        <!--<phingcall target="copyIfDirExist">-->
-            <!--<property name="from" value="${delivery.dir}"/>-->
-            <!--<property name="to" value="${showcase.dir}"/>-->
-        <!--</phingcall>-->
     </target>
 
     <target name="doComponents" hidden="true">
@@ -168,6 +136,14 @@
     <target name="doPlugins" hidden="true">
         <foreach list="${itsContentPlugins}" param="pluginID" target="doPlugin">
             <property name="type" value="content"/>
+            <property name="package.buildType" value="${package.buildType}"/>
+        </foreach>
+        <foreach list="${itsCedXMapPlugins}" param="pluginID" target="doPlugin">
+            <property name="type" value="cedxmap"/>
+            <property name="package.buildType" value="${package.buildType}"/>
+        </foreach>
+        <foreach list="${itsInstallerPlugins}" param="pluginID" target="doPlugin">
+            <property name="type" value="installer"/>
             <property name="package.buildType" value="${package.buildType}"/>
         </foreach>
         <foreach list="${itsAuthenticationPlugins}" param="pluginID" target="doPlugin">
@@ -235,7 +211,7 @@
         <zip destfile="${delivery.file}">
             <fileset dir="${packages.dir}">
                 <include name="*.zip"/>
-                <include name="pkg_${itsShortID}.xml"/>
+                <include name="pkg_*.xml"/>
             </fileset>
         </zip>
         <!--<delete dir="${packages.dir}"/>-->
@@ -244,21 +220,47 @@
 
     <target name="doMoveToRepository" hidden="true">
         <echo message="moving ${delivery.file}"/>
-        <mkdir dir="${repository.dir}/${itsShortID}${packageType}/${itsVersion}"/>
+        <!--https://www.akeebabackup.com/support/akeeba-release-system/16120-using-bleeding-edge-feature-for-stable-releases.html-->
+
+        <!--Bleeding Edge releases and items are automatically published/unpublished depending on whether the
+        directory (release) or file (item) exists. The problem here is that the path is passed through JPath for
+        verification. If your path contains dots, and other similar characters which JPath considers suspicious
+        and automatically strips from the path, the effective path seen by ARS is non-existent and the items get
+        removed. In this case, just substitute dots with dashes or underscores. For example, a release directory
+        1.0.0 gets translated to 100 and ARS thinks it doesn't exist. If you use 1_0_0 or 1-0-0 you will have no
+        problem. As far as I know, there is no such constraint for filenames, but it's safer to use only alphanumeric
+        characters, dots, dashes and underscores in the filenames.-->
+
+        <property name="copyReleaseToDirectory" value="${repository.dir}/${itsShortID}${packageType}/${itsVersion}_STABLE"/>
+
+        <mkdir dir="${copyReleaseToDirectory}"/>
         <phingcall target="copyIfFileExist">
             <property name="file" value="${delivery.file}"/>
-            <property name="to" value="${repository.dir}/${itsShortID}${packageType}/${itsVersion}"/>
+            <property name="to" value="${copyReleaseToDirectory}"/>
         </phingcall>
         <echo message="DELETING ${temp}\${filename}"/>
         <delete file="${temp}\${filename}"/>
     </target>
 
+    <target name="updateGithub" hidden="false">
+        <echo message="copy ${delivery.dir}"/>
+
+        <phingcall target="copyIfDirExist">
+            <property name="from" value="${delivery.dir}"/>
+            <property name="to" value="${githubFolder}"/>
+        </phingcall>
+
+        <gitcommit repository="${githubFolder}" message="added release ${itsVersion}" allFiles="true" />
+        <gitpush repository="${githubFolder}"/>
+
+    </target>
+
     <target name="createChangelog" hidden="true">
-        <touch file="${repository.dir}/${itsShortID}/${itsVersion}/CHANGELOG"/>
+        <touch file="${repository.dir}/${itsShortID}/${itsVersion}_STABLE/CHANGELOG"/>
     </target>
 
     <target name="createChangelogFree" hidden="true">
-        <touch file="${repository.dir}/${itsShortID}-free/${itsVersion}/CHANGELOG"/>
+        <touch file="${repository.dir}/${itsShortID}-free/${itsVersion}_STABLE/CHANGELOG"/>
     </target>
 
     <target name="doCreateManifest" hidden="true">
@@ -268,18 +270,21 @@
                    ideally generate this file with a template
                            </echo>
                 <copy file="pkg_${itsShortID}.xml" todir="${packages.dir}/" overwrite="true"/> -->
-        <copy file="${manifestLocation}" todir="${packages.dir}/" overwrite="true">
+        <copy file="${manifestLocation}" tofile="${packages.dir}/pkg_${itsShortID}${packageType}.xml" overwrite="true">
             <filterchain refid="filterchain"/>
         </copy>
     </target>
 
     <target name="doLibrary" hidden="true">
-        <echo message="preparing ${libraryID}"/>
+        <echo message="preparing ## ${libraryID}"/>
+
+        <!-- copy code -->
         <copy todir="${delivery.dir}/libraries/${libraryID}" overwrite="true">
             <fileset dir="${joomla.dir}/libraries/${libraryID}" includes="**/*"></fileset>
             <filterchain refid="filterchain"/>
         </copy>
 
+        <!-- Optional Languages -->
         <phingcall target="copyComponentLanguages">
             <property name="file" value="lib_${libraryID}.ini"/>
             <property name="to" value="${delivery.dir}/libraries/${libraryID}/language/"/>
@@ -315,6 +320,12 @@
             <property name="file" value="${componentID}.ini"/>
             <property name="to" value="${delivery.base}/administrator/language/"/>
         </phingcall>
+        <phingcall target="copyAdminLanguages">
+            <property name="file" value="${componentID}.sys.ini"/>
+            <property name="to" value="${delivery.base}/administrator/language/"/>
+        </phingcall>
+
+
         <phingcall target="copyComponentLanguages">
             <property name="file" value="${componentID}.ini"/>
             <property name="to" value="${delivery.base}/language/"/>
@@ -376,9 +387,7 @@
                 </phingcall>
             </else>
         </if>
-
-        <!-- Optional Languages -->
-        <!-- are copied at step 1-->
+        <!-- zipping result -->
         <echo message="packaging plugin ${pluginID} of type ${type}"/>
         <zip destfile="${packages.dir}/plg_${type}_${pluginID}.zip" basedir="${delivery.dir}/plugins/${type}/${pluginID}">
             <fileset dir="${delivery.dir}/plugins/${type}/${pluginID}" includes="**/*"/>
@@ -434,14 +443,14 @@
     <target name="copyAdminLanguages" hidden="true">
         <foreach list="${itsLanguages}" param="language" target="copyIfFileExist">
             <property name="file" value="${joomla.dir}/administrator/language/${language}/${language}.${file}"/>
-            <property name="to" value="${delivery.base}/administrator/language/${itsLanguages}"/>
+            <property name="to" value="${delivery.base}/administrator/language/${language}"/>
         </foreach>
     </target>
 
     <target name="copyLanguage" hidden="true">
         <foreach list="${itsLanguages}" param="language" target="copyIfFileExist">
             <property name="file" value="${joomla.dir}/language/${language}/${language}.${file}"/>
-            <property name="to" value="${delivery.base}/language/${itsLanguages}"/>
+            <property name="to" value="${delivery.base}/language/${language}"/>
         </foreach>
     </target>
 
@@ -502,12 +511,13 @@
         </filterreader>
         <replacetokens begintoken="%%" endtoken="%%">
             <token key="shortId" value="${itsShortID}"/>
-            <token key="version" value="${currentVersion}"/>
+            <token key="version" value="${itsVersion}"/>
             <token key="licensedTo" value="${licensedTo}"/>
             <token key="licenseId" value="${licenseId}"/>
             <token key="copyright" value="${copyright}"/>
             <token key="package" value="${package}"/>
             <token key="subpackage" value="${subpackage}"/>
+            <token key="packageType" value="${packageType}"/>
             <token key="date" value="${DATE}"/>
             <token key="disableForFreeVersion" value="${isFree}"/>
             <token key="creationDate" value="${DATE}"/>

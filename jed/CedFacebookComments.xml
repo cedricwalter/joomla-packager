@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jedupdate version="1" xsi:noNamespaceSchemaLocation="https://www.galaxiis.com/jed/jedupdate.xsd"
+           xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <core_body>
+        CedFacebookComments is a powerful content plugin that allows for easy integration of Facebook comment system.
+
+        ### Disqus
+        Disqus, Inc. is a blog comment hosting service for websites and online communities that uses a networked platform. The company’s platform includes various
+        features, such as social integration, social networking, user profiles, spam and moderation tools, analytics, email notifications, and mobile commenting. It was
+        founded in 2007 by Daniel Ha and Jason Yan as a Y Combinator startup.
+        Disqus ranks #1 in Quantcast's U.S. networks with 144 million monthly unique U.S. visits Disqus is featured on many major publications, such as CNN, Daily
+        Telegraph and IGN and about 750,000 blogs and websites.It competes with IntenseDebate, Livefyre and Echo.
+
+        ✓ Width of the comments box
+        ✓ Order comments by Times (oldest at top) or Social or Reverse
+        ✓ Comments Moderators
+        ✓ Themes light or dark
+        ✓ Should a comments counter be displayed in all views except the article view.
+        ✓ Enable comment icon if count is shown. Choose among 7 Icons in frontpage to let user add comments,
+        ✓ Support Font-Awesome
+        ✓ Responsive design for mobile site
+        ✓ Add Facebook comments to selected or all Joomla categories,
+
+        ### You're part of our marketing team!
+        We receive feedback from our customers and consistently turn their comments and suggestions into new and improved features.
+
+        ### Satisfaction Guarantee
+        If you are not totally satisfied with our product or installation, we will promptly resolve any issues. In the event you are still not completely satisfied, we
+        will refund your money.
+    </core_body>
+
+    <homepage_link>https://www.galaxiis.com/cedfacebookcomments-showcase/</homepage_link>
+    <download_link>https://www.galaxiis.com/cedfacebookcomments-download/</download_link>
+    <demo_link>https://www.galaxiis.com/cedfacebookcomments-demo/</demo_link>
+    <documentation_link>https://www.galaxiis.com/cedfacebookcomments-doc/</documentation_link>
+    <support_link>https://www.galaxiis.com/forums/</support_link>
+    <license_link>https://www.galaxiis.com/licence/</license_link>
+    <version>%%version%%</version>
+    <compatibility>
+        <version>30</version>
+    </compatibility>
+</jedupdate>

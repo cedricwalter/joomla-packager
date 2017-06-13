@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<extension type="package" version="3.0" method="upgrade">
+    <name>%%package%% | Galaxiis.com</name>
+
+    #if free
+    <packagename>%%shortId%%-free</packagename>
+    #endif
+    #if premium
+    <packagename>%%shortId%%</packagename>
+    #endif
+
+    <author>Galaxiis</author>
+    <authorEmail>galaxiiscom@gmail.com</authorEmail>
+    <authorUrl>www.galaxiis.com</authorUrl>
+    <creationDate>%%creationDate%%</creationDate>
+    <version>%%version%%</version>
+    <copyright>%%copyright%%</copyright>
+    #if free
+    <license>http://www.gnu.org/licenses/gpl-3.0.html GNU/GPL 3.0</license>
+    #endif
+    #if premium
+    <license>http://confluence.galaxiis.com/display/GAL/SOFTWARE+LICENSE+AGREEMENT</license>
+    #endif
+    <packager>Galaxiis</packager>
+    <packagerurl>http://www.galaxiis.com</packagerurl>
+
+    <description><![CDATA[
+
+<p>This
+small plugin add automatically to any article a set of social icons
+that let your reader increase your social ranking.</p>
+<p>Choose
+which buttons to show and where to show them in your Joomla
+com_content. Include or exclude specific articles, sections or
+categories.&nbsp;Your visitors still stay on your site, so you do not
+loose visitors to other sites.&nbsp;</p>
+<p><a href="https://www.galaxiis.com/cedsocialsharinglive-demo/">More
+documentation</a><br>
+</p>
+
+]]>
+    </description>
+
+    <packager>Galaxiis</packager>
+
+    <packagerurl>http://www.galaxiis.com</packagerurl>
+    <files>
+        <file type="plugin" id="cedsocialsharinglive" group="content">plg_content_cedsocialsharinglive.zip</file>
+        #if premium
+        <file type="module" id="mod_cedsocialsharinglive" group="content">mod_cedsocialsharinglive.zip</file>
+        <file type="module" id="mod_cedclassysocial" group="content">mod_cedclassysocial.zip</file>
+        #endif
+        <file type="library" id="galaxiis">lib_galaxiis.zip</file>
+        <file type="plugin" id="galaxiis" group="installer">plg_installer_galaxiis.zip</file>
+    </files>
+
+    <updateservers>
+        <!-- 1. ideally the redirect 301/302 is better but has some restriction with curl. open_basedir -->
+        <!--<server name="Galaxiis Update Directory" priority="1" type="collection">https://www.galaxiis.com/update.xml</server>-->
+
+        <!-- this dont work better, same as 1 without redirect -->
+        <!--<server name="Galaxiis Update Directory" priority="1" type="collection"><![CDATA[https://www.galaxiis.com/index.php/component/ars/updates/packages?format=xml&dummy=extension.xml]]></server>-->
+
+        <server name="%%package%% Update" priority="2" type="extension"><![CDATA[https://www.galaxiis.com/index.php/component/ars/updates/packages/%%shortId%%%%packageType%%?format=xml&dummy=extension.xml]]></server>
+    </updateservers>
+
+
+</extension>

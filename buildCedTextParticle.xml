@@ -1,0 +1,44 @@
+<?xml version="1.0"?>
+<project name="joomla-packager" default="build" basedir=".">
+
+    <import file="./joomla-packager.xml"/>
+
+    <property name="copyright" value="CedTextParticle 1.7.1 - Copyright (C) 2013-2017 galaxiis.com All rights reserved."/>
+    <property name="itsVersion" value="1.7.1"/>
+    <property name="itsShortID" value="cedtextparticle"/>
+    <property name="package" value="CedTextParticle"/>
+    <property name="subpackage" value="com_cedtextparticle"/>
+
+    <property name="jedUpdateFile" value="./jed/CedTextParticle.xml"/>
+
+    <!-- j25, j30 or anything else -->
+    <property name="joomlaID" value="j30_j31_j32_j33_j34_j36"/>
+
+    <!--- tokenized list of name separated by , if none apply leave empty-->
+    <property name="itsComponents" value=""/> <!--without com -->
+    <property name="itsLibraries" value=""/>
+    <property name="itsModules" value="mod_cedtextparticle"/>
+    <property name="itsAuthenticationPlugins" value=""/>
+    <property name="itsCedXMapPlugins" value=""/>
+    <property name="itsContentPlugins" value=""/>
+    <property name="itsCaptchaPlugins" value=""/>
+    <property name="itsEditorsPlugins" value=""/>
+    <property name="itsEditorsXtdPlugins" value=""/>
+    <property name="itsExtensionPlugins" value=""/>
+    <property name="itsFinderPlugins" value=""/>
+    <property name="itsInstallerPlugins" value="galaxiis"/>
+    <property name="itsQuickiconPlugins" value=""/>
+    <property name="itsSearchPlugins" value=""/>
+    <property name="itsSystemPlugins" value=""/>
+    <property name="itsUserPlugins" value=""/>
+    <property name="itsLanguages" value="en-GB"/>
+    <property name="itsXmlrpcPlugins" value=""/>
+
+    <!-- temporary -->
+    <property name="githubFolder" value="C:\Users\cedric\Documents\Github\CedTextParticle"/>
+    <property name="manifestLocation" value="manifest/pkg_cedtextparticle.xml"/>
+
+    <property name="temp" value="c:\temp"/>
+
+</project>
+

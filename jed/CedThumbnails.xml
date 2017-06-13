@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jedupdate version="1">
+    <core_body>
+        CedThumbnails add a widget that appears under each post, linking to related stories from your blog.
+
+        ### Features
+        ✓ Images are created and re-size automatically based on articles content.
+        ✓ Support mobile themes: responsive layout so it adapt to the screen size
+        ✓ 5 Elegant designs to choose from
+        ✓ Horizontal, vertical, animated with sliders, and more
+        ✓ Related post are found either by
+        ✓ using article in same category
+        ✓ using Joomla tags (3.1 only)
+        ✓ using meta keywords
+        ✓ Number of posts
+        ✓ Categories to include/exclude
+        ✓ Set default image
+        ✓ Thumbnail size, style
+        ✓ and more...
+
+        ### You're part of our marketing team!
+        At Galaxiis.com we receive feedback from our customers and consistently turn their comments and suggestions into new and improved features.
+
+        ### Satisfaction Guarantee
+        If you are not totally satisfied with our product or installation, we will promptly resolve any issues. In the event you are still not completely satisfied, we
+        will refund your money.
+    </core_body>
+    <homepage_link>https://www.galaxiis.com/cedthumbnails-showcase/</homepage_link>
+    <download_link>https://www.galaxiis.com/cedthumbnails-download/</download_link>
+    <demo_link>https://www.galaxiis.com/cedthumbnails-demo/</demo_link>
+    <documentation_link>https://www.galaxiis.com/cedthumbnails-doc/</documentation_link>
+    <support_link>https://www.galaxiis.com/forums/</support_link>
+    <license_link>https://www.galaxiis.com/licence/</license_link>
+    <version>%%version%%</version>
+    <compatibility>
+        <version>30</version>
+    </compatibility>
+</jedupdate>
+

@@ -1,0 +1,59 @@
+<?xml version="1.0"?>
+<project name="joomla-packager" default="build" basedir=".">
+
+    <import file="./joomla-packager.xml"/>
+
+    <property name="licensedTo" value="Licensed"/>
+    <property name="licenseId" value=""/>
+
+    <property name="copyright" value="Copyright (C) 2013-2017 galaxiis.com All rights reserved."/>
+    <property name="itsVersion" value="3.0.1"/>
+    <property name="itsShortID" value="cedstockmarketwatch"/>
+    <property name="package" value="CedStockMarketWatch"/>
+    <property name="subpackage" value="com_cedstockmarketwatch"/>
+
+    <property name="jedUpdateFile" value="./jed/CedStockMarketWatch.xml"/>
+
+    <!-- j25, j30 or anything else -->
+    <property name="joomlaID" value="j35_j36"/>
+
+    <!--- tokenized list of name separated by , if none apply leave empty-->
+    <property name="itsComponents" value=""/> <!--without com -->
+
+    <!-- Name of directories from /libraries/ separated by , if none apply leave empty -->
+    <property name="itsLibraries" value="galaxiis,cedsimplepie"/>
+
+    <!-- Name of directories from /modules/ separated by , if none apply leave empty -->
+    <property name="itsModules" value="mod_cedstockmarketwatch,mod_cedstockmarketnews,mod_cedstockmarketwatchtime,mod_cedstockticker,mod_cedstockdashboard,mod_cedstocksingle"/>
+
+    <!-- Name of directories from /plugins/authentification/ separated by , if none apply leave empty -->
+    <property name="itsAuthenticationPlugins" value=""/>
+
+    <!-- Name of directories from /plugins/content/ separated by , if none apply leave empty -->
+    <property name="itsContentPlugins" value=""/>
+
+    <!-- Name of directories from /plugins/captcha/ separated by , if none apply leave empty -->
+    <property name="itsCaptchaPlugins" value=""/>
+
+    <!-- and so on -->
+    <property name="itsEditorsPlugins" value=""/>
+    <property name="itsEditorsXtdPlugins" value=""/>
+    <property name="itsExtensionPlugins" value=""/>
+    <property name="itsFinderPlugins" value=""/>
+    <property name="itsCedXMapPlugins" value=""/>
+    <property name="itsInstallerPlugins" value="galaxiis"/>
+    <property name="itsQuickiconPlugins" value=""/>
+    <property name="itsSearchPlugins" value=""/>
+    <property name="itsSystemPlugins" value=""/>
+    <property name="itsUserPlugins" value=""/>
+    <property name="itsLanguages" value="en-GB"/>
+    <property name="itsXmlrpcPlugins" value=""/>
+
+    <!-- temporary -->
+    <property name="githubFolder" value="C:\Users\cedric\Documents\Github\CedStockMarketWatch"/>
+    <property name="manifestLocation" value="manifest/pkg_cedstockmarketwatch.xml"/>
+
+    <property name="temp" value="c:\temp"/>
+
+
+</project>

@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jedupdate version="1">
+    <core_body>
+        CedHead help you to avoid changing your template index.php manually, and make updates a lot easier especially if you use templates provider like Rockethemes. Moreover since you do not change the file index.php anymore, joomla or any other 3rd party extensions can now optimize the head.
+    </core_body>
+    <homepage_link>https://www.galaxiis.com/cedhead-showcase/</homepage_link>
+    <download_link>https://www.galaxiis.com/cedhead-download/</download_link>
+    <demo_link>https://www.galaxiis.com/cedhead-demo/</demo_link>
+    <documentation_link>https://www.galaxiis.com/cedhead-doc/</documentation_link>
+    <support_link>https://www.galaxiis.com/forums/</support_link>
+    <license_link>https://www.galaxiis.com/licence/</license_link>
+    <version>%%version%%</version>
+    <compatibility>
+        <version>30</version>
+    </compatibility>
+</jedupdate>

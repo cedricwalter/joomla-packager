@@ -1,0 +1,52 @@
+<?xml version="1.0"?>
+<project name="joomla-packager" default="build" basedir=".">
+
+    <import file="./joomla-packager.xml"/>
+
+    <property name="copyright" value="Copyright (C) 2013-2017 galaxiis.com All rights reserved."/>
+    <property name="itsVersion" value="3.1.2"/>
+    <property name="itsShortID" value="cedyahooweather"/>
+    <property name="package" value="CedYahooWeather"/>
+    <property name="subpackage" value="mod_cedyahooweather"/>
+
+    <property name="jedUpdateFile" value="./jed/CedYahooWeather.xml"/>
+
+    <!-- j25, j30 or anything else -->
+    <property name="joomlaID" value="j30_j31_j_32_j33_j34"/>
+
+    <!--- tokenized list of name separated by , if none apply leave empty-->
+    <property name="itsComponents" value="cedyahooweather"/> <!--without com -->
+    <property name="itsLibraries" value="galaxiis"/>
+    <property name="itsModules" value="mod_cedyahooweather"/>
+    <property name="itsAuthenticationPlugins" value=""/>
+    <property name="itsCedXMapPlugins" value=""/>
+    <property name="itsContentPlugins" value=""/>
+    <property name="itsCaptchaPlugins" value=""/>
+    <property name="itsEditorsPlugins" value=""/>
+    <property name="itsEditorsXtdPlugins" value=""/>
+    <property name="itsInstallerPlugins" value="galaxiis"/>
+    <property name="itsExtensionPlugins" value=""/>
+    <property name="itsFinderPlugins" value=""/>
+    <property name="itsQuickiconPlugins" value=""/>
+    <property name="itsSearchPlugins" value=""/>
+    <property name="itsSystemPlugins" value=""/>
+    <property name="itsUserPlugins" value=""/>
+    <property name="itsLanguages" value="en-GB,fr-FR,de-DE,pt-PT"/>
+    <property name="itsXmlrpcPlugins" value=""/>
+
+    <!-- temporary -->
+    <property name="manifestLocation" value="manifest/pkg_cedyahooweather.xml"/>
+    <property name="githubFolder" value="C:\Users\cedric\Documents\Github\CedYahooWeather"/>
+    <property name="temp" value="c:\temp"/>
+
+    <!--
+    rewrite /cedgooglepluscomments-download http://www.galaxiis.com/index.php?option=com_ars&view=category&id=1&Itemid=236 permanent;
+    rewrite /cedgooglepluscomments-doc http://confluence.galaxiis.com/display/GAL/cedGooglePlusComments permanent;
+    rewrite /cedgooglepluscomments-subscribe http://www.galaxiis.com/index.php?option=com_akeebasubs&view=level&slug=cedgooglepluscomments-1-year&format=html&layout=default&Itemid=157 permanent;
+    rewrite /cedgooglepluscomments-demo http://showcase.galaxiis.com/ permanent;
+    rewrite /cedgooglepluscomments-showcase http://www.galaxiis.com/index.php?option=com_content&view=article&id=53&Itemid=254 permanent;
+-->
+
+
+</project>
+

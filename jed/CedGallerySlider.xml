@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jedupdate version="1" xsi:noNamespaceSchemaLocation="https://www.galaxiis.com/jed/jedupdate.xsd"
+           xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <core_body>
+        CedGallerySlider is touch swipe (touch+drag+move) and Responsive image slider with 360+ java script slideshow effects. With more than 30+ themes, it's easy to
+        work out image slider, content slider, fade slideshow, thumbnail slider, nested slider, carousel slider, slider cluster, full width slider, grid slider, list
+        slider, vertical slider, image gallery, banner slider, banner rotator, video gallery for website, web page presentation.
+
+        CedGallerySlider is the most feature complete slider and will help you creating attractive image sliders and displaying photos as a slideshow with fancy
+        transition effects on your website!
+
+        ### Features
+        ✓ 100% based on HTML5, CSS3 and JavaScript.
+        ✓ Display all images stored in a directory
+        ✓ As navigation you can use thumbnails, arrows or bullets,
+        ✓ Read IPTC and EXIF data to create title and descriptions,
+        ✓ Automatic thumbnails creation
+        ✓ Sorting by Date using Exif data,
+        ✓ SEO (Search Engine Optimization) friendly
+        ✓ Animated captions, responsive layout and touch support for mobile devices
+        ✓ High performance and cross-browser compatibility,
+        ✓ Super-easy installation and management,
+        ✓ Flexible settings and robust stability
+        ✓ Thumbnail size, style
+
+        ### Touch swipe and responsive
+        Touch swipe and responsive image slider for mobile, tablet and desktop. All devices supported: Android, iOS and Windows Phone.
+
+        ### All browser supported
+        CedGallerySlider is tested regularly with all major browsers. Chrome 3+, Firefox 2+, IE 6+, Safari 3.1+ and Opera 10+
+
+        ### 390+ Transitions
+        More than 390+ caption slide effects and fancy transition effects to choose from! Choose one or many amazing visual effects.
+
+        ### 30+ Templates
+        Easy to use administrator panel to create fantastic sliders in a matter of seconds without coding and image editing.
+
+        ### Rocking Fast
+        CedGallerySlider uses techniques like lazy load for optimal performance. All code has been carefully optimized for speed.
+
+        ### All in one!
+        CedGallerySlider is an image slider, content slider, fade slideshow, thumbnail slider, nested slider, carousel slider, slider cluster, full width slider, grid
+        slider, list slider, vertical slider, image gallery, banner slider, banner rotator, video gallery, tiled menu slider all in one!
+
+        ### One Click Install
+        CedGallerySlider is using Joomla packaging and installs with 1 click one components and 1 modules.
+
+        ### You're part of our marketing team!
+        At Galaxiis.com we receive feedback from our customers and consistently turn their comments and suggestions into new and improved features.
+
+        ### Satisfaction Guarantee
+        If you are not totally satisfied with our product or installation, we will promptly resolve any issues. In the event you are still not completely satisfied, we
+        will refund your money.
+    </core_body>
+    <homepage_link>https://www.galaxiis.com/cedgalleryslider-showcase/</homepage_link>
+    <download_link>https://www.galaxiis.com/cedgalleryslider-download/</download_link>
+    <demo_link>https://www.galaxiis.com/cedgalleryslider-demo/</demo_link>
+    <documentation_link>https://www.galaxiis.com/cedgalleryslider-doc/</documentation_link>
+    <support_link>https://www.galaxiis.com/forums/</support_link>
+    <license_link>https://www.galaxiis.com/licence/</license_link>
+    <version>%%version%%</version>
+    <compatibility>
+        <version>30</version>
+    </compatibility>
+</jedupdate>

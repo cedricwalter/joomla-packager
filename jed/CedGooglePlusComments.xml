@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jedupdate version="1">
+    <core_body>
+        CedGooglePlusComments is a powerful content plugin that allows for easy integration of Google+ comment system.
+
+        ### Google+
+        Google+ Comments look similar to traditional Facebook comments, but have some important differences. For example:
+        When you leave a comment on a blog, you'll see the option, checked by default, to also share that comment to Google+..
+        Google+ posts that link to blog posts will show up as a comment underneath those blog posts.
+        If original comment is shared to Google+, replies to the comment on the blog will show up in Google+ and vice versa, but only to the people that the original
+        comment was shared with.
+        If a comment is not shared with the blog author, the blog author will not be able to see the comment in either location.
+        As the author of a post, you’ll receive Google+ notifications when readers comment on or share your blog post.
+        What if my readers don’t have a Google+ profile or page? Can they still comment? No, but they will be prompted to create one when they attempt to comment.
+
+        Google+ Comments is not available for private blogs and for blogs with adult content.
+
+        What happens when I remove a comment? Removing a Google+ comment will only affect the comment in the particular location you removed it from. For example, someone
+        might create a public Google+ post that links to your blog post -- and since it links to your blog post, it'll show up as a comment on your blog. You can remove
+        the instance of this post from your blog, but your removal won't affect the original post from showing up on Google+.
+
+        ### Features
+        ✓ Width of the comments box
+        ✓ Display social interactions made on Google Plus.
+        ✓ Themes light or dark
+        ✓ Comments moderation support. (If you provide a Google+ Profile ID)
+        ✓ Should a comments counter be displayed in all views except the article view.
+        ✓ Enable comment icon if count is shown. Choose among 7 Icons in frontpage to let user add comments,
+        ✓ Support Font-Awesome
+        ✓ Responsive design: works on Mobiles and desktop
+        ✓ HTML5 implementation
+        ✓ Add Google+ comments to selected or all Joomla categories,
+
+        ### You're part of our marketing team!
+        At Galaxiis.com we receive feedback from our customers and consistently turn their comments and suggestions into new and improved features.
+
+        ### Satisfaction Guarantee
+        If you are not totally satisfied with our product or installation, we will promptly resolve any issues. In the event you are still not completely satisfied, we
+        will refund your money.
+    </core_body>
+    <homepage_link>https://www.galaxiis.com/cedgooglepluscomments-showcase/</homepage_link>
+    <download_link>https://www.galaxiis.com/cedgooglepluscomments-download/</download_link>
+    <demo_link>https://www.galaxiis.com/cedgooglepluscomments-demo/</demo_link>
+    <documentation_link>https://www.galaxiis.com/cedgooglepluscomments-doc/</documentation_link>
+    <support_link>https://www.galaxiis.com/forums/</support_link>
+    <license_link>https://www.galaxiis.com/licence/</license_link>
+    <version>%%version%%</version>
+    <compatibility>
+        <version>30</version>
+    </compatibility>
+</jedupdate>

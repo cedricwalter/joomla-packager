@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jedupdate version="1">
+    <core_body>
+        ### Apple iOS
+        **How it Works**
+        The message appears after 2 seconds (customizable) from page load, and is destroyed after 20 seconds (also customizable). The balloon enters and exits the screen
+        with a quick configurable animation: drop from top, bubble from bottom or fade in/out.
+        The balloon can be dismissed any time by tapping the small “x” icon. The script also checks the user locale and shows the message in an appropriate language.
+
+        ✓ following languages are supported: Catalan Chinese (Traditional and Simplified) Danish Dutch English Finnish French German Greek Hebrew Hungarian Italian
+        Japanese Korean Norwegian Portuguese Russian Spanish Swedish Thai Turkish
+
+        **Custom Startup images **
+        Often call also splash screen: the splash screen is a rectangular or full screen image which appears while a software product is loading (OS, CAD, game, etc).
+        Often it contains a progress bar, indicating the loading phases.
+        Specifying a startup image is available in iOS 3.0 and later. On iOS, similar to native applications, you can specify a startup image that is displayed while your
+        website application launches. This is especially useful when your web application is offline. By default, a screenshot of the web application the last time it was
+        launched is used.
+
+        ✓ You can provide up to 7 startup images!
+        ✓ If images are not of the corrected size, the image will be scale automatically up or down by CedAdd2Home. It is recommended is to provide the correct size for
+        best result
+
+        **Custom icon to springboard**
+        You may want users to be able to add your web application or webpage link to the Home screen. These links, represented by an icon, are called Web Clips.
+
+        ✓ You can provide up to 7 custom icons for all iPhone, iPad being retina, mini running iOS7/8+ or still running under iOS6!
+        ✓ If images are not of the corrected size, the image will be scale automatically up or down by CedAdd2Home. It is recommended is to provide the correct size for
+        best result
+
+        **Custom Messages**
+        It is possible to override the default message to invite user to add your site to their home screen.
+
+
+        ### Windows 8.1 tiles
+        *★ premium version only*
+
+        With Internet Explorer, users can put their favorite Web sites right beside their favorite apps by pinning them to the Windows and Windows Phone Start Screens.
+        Pinning Web sites from IE gives users immediate access to these sites from the Start Screen without having to navigate to them repeatedly.
+
+        When users pin your site, they have indicated that they are frequent visitors of your site and care about updates from it. With that in mind, Internet Explorer
+        now brings you Live Tiles for Web sites, allowing you to keep your users connected to your Web site outside of the browser.
+
+        With Live Tiles, you can engage with your users by bringing fresh content such as breaking news, new message alerts or titles of new blog posts right to their
+        Start Screen. Furthermore, you can support multiple tile sizes for your Web site, allowing users to display your site prominently as wide or large tiles.
+
+        Windows Desktop and Windows Mobile are also supported by CedAdd2Home
+
+        **Notifications / Live Tile to your website**
+        Live Tiles for Web sites are powered by Periodic Notifications, wherein the platform pulls text and images from polling uris hosted on a server at a predefined
+        polling interval, and displays this content on the Web site’s tile.
+
+        With Windows 8.1, pinned site tiles can notify a user outside Internet Explorer 11 and pull them right back in! If you have a web feed, you can automatically
+        build notifications into your tile. Who said RSS was dead? If you don't have one, skip this step. You can choose to implement custom tile notifications later.
+
+        The polling uris defined in this example contain the contents of the notification to be displayed and will be polled every half an hour. Therefore in a given 30
+        minute interval, a user can see up to 5 updates from this site, keeping your user intimately connected with your Web site at all times.
+
+        You can use 1 to 5 URL to your RSS feed in CedAdd2Home.
+
+        ### Windows 7
+        *★ premium version only*
+        Your site feels more like a native app in Internet Explorer 9 through pinning. Discover a new way to get more results from your Windows 7 users on the web,
+        reaching nearly 35% in the USA and over 21% worldwide.
+
+        Test it by dragging your site tab to the Windows 7 taskbar when CedAdd2Home premium is installed.
+
+        **hi-res favicon support**
+        Your site's logo lights-up on the Windows taskbar when it’s high-resolution. When users pin your site, they become your most loyal customers. Give them a
+        one-click experience that brings them back again and again.
+
+        **Jump List**
+        Your site is more than a home page. You have great content but users don’t always get to it. Inspire them to go deeper with Jump Lists. There are two types:
+        Static Jump List: Use these to promote the most common places you want your users to go
+        Dynamic Jump List: Use these to get creative, pulling your users in with the latest articles, personalized deals, or trending topics
+
+        **Notifications**
+        How do you catch user attention when they’re not actively browsing your site? Pull them with a timely notification. Use an icon overlay when new content is
+        available or flash the taskbar to show when user action is requested just like an app.
+
+        ### Android
+        *★ premium version only*
+        The message appears after 2 seconds (customizable) from page load, and is destroyed after 20 seconds (also customizable). The balloon enters and exits the screen
+        with a quick configurable animation: drop from top, bubble from bottom or fade in/out.
+        The balloon can be dismissed any time by tapping the small “x” icon. The script also checks the user locale and shows the message in an appropriate language.
+
+        ✓ following languages are supported: Catalan Chinese (Traditional and Simplified) Danish Dutch English Finnish French German Greek Hebrew Hungarian Italian
+        Japanese Korean Norwegian Portuguese Russian Spanish Swedish Thai Turkish
+
+        ### Resume
+
+        ✓ Make Joomla appear like a standard native application
+        ✓ Autostarts on page load
+        ✓ Show the message to returning visitors only
+        ✓ Animations for display and exit
+        ✓ Message auto hide
+        ✓ Custom message
+        ✓ Customizable appearance
+
+        ### You're part of our marketing team!
+        At Galaxiis.com we receive feedback from our customers and consistently turn their comments and suggestions into new and improved features.
+
+        ### Satisfaction Guarantee
+        If you are not totally satisfied with our product or installation, we will promptly resolve any issues. In the event you are still not completely satisfied, we
+        will refund your money.
+    </core_body>
+    <homepage_link>https://www.galaxiis.com/cedadd2home-showcase/</homepage_link>
+    <download_link>https://www.galaxiis.com/cedadd2home-download/</download_link>
+    <demo_link>https://www.galaxiis.com/cedadd2home-demo/</demo_link>
+    <documentation_link>https://www.galaxiis.com/cedadd2home-doc/</documentation_link>
+    <support_link>https://www.galaxiis.com/forums/</support_link>
+    <license_link>https://www.galaxiis.com/licence/</license_link>
+    <version>%%version%%</version>
+    <compatibility>
+        <version>30</version>
+    </compatibility>
+</jedupdate>

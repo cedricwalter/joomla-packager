@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jedupdate version="1">
+    <core_body>
+        Embedding FreeMind mind map into Joomla has never been so easy! CedFreemind use a Flash browser to display your FreeMind map.
+
+        ### Features
+        ✓ Display unlimited number of Freemind maps into articles
+        ✓ Zooming, Auto Fit to screen
+        ✓ Search through node
+        ✓ Node states can be configured (collapsed, unfold all)
+        ✓ Customization of appearance
+
+        *★ premium version only*
+        ✓ Display mindmap in module
+        ✓ Support
+
+
+        ### Why using CedFreemind?
+        FreeMind is a free mind mapping application written in Java. FreeMind is licensed under the GNU General Public License. It provides extensive export capabilities.
+        It runs on Microsoft Windows, Linux and Mac OS X via the Java Runtime Environment.
+
+        As with other mind mapping software packages, FreeMind allows the user to edit a hierarchical set of ideas around a central concept. The non-linear approach
+        assists in brainstorming new outlines and projects as ideas are added around the mind map.
+
+        ### You're part of our marketing team!
+        At Galaxiis.com we receive feedback from our customers and consistently turn their comments and suggestions into new and improved features.
+
+        ### Satisfaction Guarantee
+        If you are not totally satisfied with our product or installation, we will promptly resolve any issues. In the event you are still not completely satisfied, we
+        will refund your money.
+    </core_body>
+    <homepage_link>https://www.galaxiis.com/cedfreemind-showcase/</homepage_link>
+    <download_link>https://www.galaxiis.com/cedfreemind-download/</download_link>
+    <demo_link>https://www.galaxiis.com/cedfreemind-demo/</demo_link>
+    <documentation_link>https://www.galaxiis.com/cedfreemind-doc/</documentation_link>
+    <support_link>https://www.galaxiis.com/forums/</support_link>
+    <license_link>https://www.galaxiis.com/licence/</license_link>
+    <version>%%version%%</version>
+    <compatibility>
+        <version>30</version>
+    </compatibility>
+</jedupdate>

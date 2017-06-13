@@ -4,42 +4,35 @@
     <import file="./joomla-packager.xml"/>
 
     <property name="copyright" value="Copyright (C) 2013-2017 galaxiis.com All rights reserved."/>
-    <property name="itsVersion" value="3.0.4"/>
-    <property name="itsShortID" value="cedadd2home"/>
-    <property name="package" value="CedAdd2Home"/>
-    <property name="subpackage" value="com_cedadd2home"/>
+    <property name="itsVersion" value="3.5.1"/>
+    <property name="itsShortID" value="cedfreemind"/>
+    <property name="package" value="CedFreemind"/>
+    <property name="subpackage" value="com_cedfreemind"/>
 
-    <property name="jedUpdateFile" value="./jed/CedAdd2Home.xml"/>
-
-    <!-- j25, j30 or anything else -->
-    <property name="joomlaID" value="j30_j31_j32_j33_j34_j34"/>
-
-    <property name="licensedTo" value="Licensed"/>
-    <property name="licenseId" value=""/>
+    <property name="jedUpdateFile" value="./jed/CedFreemind.xml"/>
 
     <!--- tokenized list of name separated by , if none apply leave empty-->
-    <property name="itsComponents" value="cedadd2home"/> <!--without com -->
+    <property name="itsComponents" value="cedfreemind"/> <!--without com -->
     <property name="itsLibraries" value="galaxiis"/>
-    <property name="itsModules" value=""/>
+    <property name="itsModules" value="mod_cedfreemind,mod_cedfreemindcontent"/>
     <property name="itsCedXMapPlugins" value=""/>
     <property name="itsAuthenticationPlugins" value=""/>
-    <property name="itsContentPlugins" value=""/>
+    <property name="itsContentPlugins" value="cedfreemind"/>
     <property name="itsCaptchaPlugins" value=""/>
-    <property name="itsEditorsPlugins" value=""/>
     <property name="itsInstallerPlugins" value="galaxiis"/>
-    <property name="itsEditorsXtdPlugins" value=""/>
+    <property name="itsEditorsPlugins" value=""/>
+    <property name="itsEditorsXtdPlugins" value="cedfreemind"/>
     <property name="itsExtensionPlugins" value=""/>
     <property name="itsFinderPlugins" value=""/>
     <property name="itsQuickiconPlugins" value=""/>
     <property name="itsSearchPlugins" value=""/>
-    <property name="itsSystemPlugins" value="add2home"/>
+    <property name="itsSystemPlugins" value=""/>
     <property name="itsUserPlugins" value=""/>
     <property name="itsLanguages" value="en-GB"/>
     <property name="itsXmlrpcPlugins" value=""/>
 
     <!-- temporary -->
-    <property name="githubFolder" value="C:\Users\cedric\Documents\Github\CedAdd2Home"/>
-    <property name="manifestLocation" value="manifest/pkg_cedadd2home.xml"/>
+    <property name="manifestLocation" value="manifest/pkg_cedfreemind.xml"/>
 
     <property name="temp" value="c:\temp"/>
 

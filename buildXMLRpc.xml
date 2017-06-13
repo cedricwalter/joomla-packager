@@ -1,0 +1,43 @@
+<?xml version="1.0"?>
+<project name="joomla-packager" default="build" basedir=".">
+
+    <import file="./joomla-packager.xml"/>
+
+
+    <property name="copyright" value="Copyright (C) 2016 galaxiis.com."/>
+    <property name="itsVersion" value="4.0.0"/>
+    <property name="itsShortID" value="xmlrpc"/>
+    <property name="itsShortID" value="xmlrpc"/>
+    <property name="package" value="xmlrpc"/>
+    <property name="subpackage" value="com_xmlrpc"/>
+
+    <!-- j25, j30 or anything else -->
+    <property name="joomlaID" value="j34"/>
+
+    <!--- tokenized list of name separated by , if none apply leave empty-->
+    <property name="itsComponents" value="xmlrpc"/> <!--without com -->
+    <property name="itsLibraries" value="galaxiis,cedxmlrpc"/>
+    <property name="itsModules" value=""/>
+    <property name="itsAuthenticationPlugins" value=""/>
+    <property name="itsContentPlugins" value=""/>
+    <property name="itsCedXMapPlugins" value=""/>
+    <property name="itsCaptchaPlugins" value=""/>
+    <property name="itsEditorsPlugins" value=""/>
+    <property name="itsEditorsXtdPlugins" value=""/>
+    <property name="itsInstallerPlugins" value="galaxiis"/>
+    <property name="itsExtensionPlugins" value=""/>
+    <property name="itsFinderPlugins" value=""/>
+    <property name="itsQuickiconPlugins" value=""/>
+    <property name="itsSearchPlugins" value=""/>
+    <property name="itsSystemPlugins" value="rsd"/>
+    <property name="itsUserPlugins" value=""/>
+    <property name="itsLanguages" value="en-GB"/>  <!--todo only one language is supported and onyl in each plugins folder-->
+    <property name="itsXmlrpcPlugins" value="joomla"/>
+
+    <!-- temporary -->
+    <property name="manifestLocation" value="manifest/pkg_xmlrpc.xml"/>
+
+    <property name="temp" value="c:\temp"/>
+
+</project>
+

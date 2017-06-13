@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jedupdate version="1">
+    <core_body>
+        CedDisqusComments is a powerful content plugin that allows for easy integration of Disqus comment system.
+
+        ### Disqus
+        Disqus, Inc. is a blog comment hosting service for websites and online communities that uses a networked platform. The company’s platform includes various
+        features, such as social integration, social networking, user profiles, spam and moderation tools, analytics, email notifications, and mobile commenting. It was
+        founded in 2007 by Daniel Ha and Jason Yan as a Y Combinator startup.
+        Disqus ranks #1 in Quantcast's U.S. networks with 144 million monthly unique U.S. visits Disqus is featured on many major publications, such as CNN, Daily
+        Telegraph and IGN and about 750,000 blogs and websites.It competes with IntenseDebate, Livefyre and Echo.
+
+        **CedDisqusComments **is the simpliest DISQUS plugin that simply works!
+
+        ### Why using CedDisqusComments?
+        The Comments box lets people comment on content on your site using their Disqus profile and shows this activity to their friends in news feed. It also contains
+        built-in moderation tools and special social relevance ranking.
+
+        ### Features
+        ✓ Width of the comments box
+        ✓ Should a comments counter be displayed in all views except the article view.
+        ✓ Enable comment icon if count is shown. Choose among 7 Icons in frontpage to let user add comments,
+        ✓ Support Font-Awesome
+        ✓ Responsive design for mobile site
+        ✓ Add Disqus comments to selected or all Joomla categories,
+
+        ### You're part of our marketing team!
+        At Galaxiis.com we receive feedback from our customers and consistently turn their comments and suggestions into new and improved features.
+
+        ### Satisfaction Guarantee
+        If you are not totally satisfied with our product or installation, we will promptly resolve any issues. In the event you are still not completely satisfied, we
+        will refund your money.
+
+        WHY CHOOSE DISQUS? HIGHLIGHTS OF THE DISQUS COMMENT SYSTEM
+
+        Web comments can be difficult for both websites and their readers. We think Disqus is the solution. Disqus makes it easier for people to comment and track their contributions on a single profile which they can display as a comment blog. After all, there is no difference between a great comment and a great published article.
+
+        Disqus makes managing discussions on one or multiple websites painless. With a powerful and intuitive admin interface, Disqus allows website owners to spend time elsewhere while Disqus takes care of the comments.
+
+        Key benefits for Websites, Publishers, Bloggers
+        * Threaded comments and comment ratings
+        * Powerful moderation and admin tools
+        * Filter out spam, trolls, and unwanted commenters
+        * Enable your visitors to become a real community
+        * Moderation by email or mobile
+        * More comments and increased engagement
+        * Connected with a large discussion community
+        * Increased exposure and readership
+
+        Key benefits for Commenters, Readers
+        * Track and manage comments and replies
+        * Verified commenter reputations across sites
+        * More control over your own comments on websites
+        * Never lose your comments, even if the website goes away
+        * Build a global profile, or comment blog, to collect and show off what you're saying
+        * Easier to comment on websites using Disqus
+        * Reply to comments through email or mobile
+        * Edit and republish comments with one click
+    </core_body>
+    <homepage_link>https://www.galaxiis.com/ceddisquscomments-showcase/</homepage_link>
+    <download_link>https://www.galaxiis.com/ceddisquscomments-download/</download_link>
+    <demo_link>https://www.galaxiis.com/ceddisquscomments-demo/</demo_link>
+    <documentation_link>https://www.galaxiis.com/ceddisquscomments-doc/</documentation_link>
+    <support_link>https://www.galaxiis.com/forums/</support_link>
+    <license_link>https://www.galaxiis.com/licence/</license_link>
+    <version>%%version%%</version>
+    <compatibility>
+        <version>30</version>
+    </compatibility>
+</jedupdate>

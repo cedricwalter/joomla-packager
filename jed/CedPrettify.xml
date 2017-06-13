@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jedupdate version="1">
+    <core_body>
+        Syntax highlighting of source code snippets in an html page!
+
+        ★ Used by code.google.com and stackoverflow.com!
+        ★ Works on HTML pages,
+        ★ 14 styles are available to match your blog style,
+        ★ All C-like, Bash-like, and XML-like languages supported,
+        ★ 27 additionnal languages supported,
+        ★ Cross Browser Support
+        ★ Customizable
+        ★ Supports all C-like, Bash-like, and XML-like languages. No need to specify the language
+        ★ Extensible language handlers for other languages. You can specify the language.
+        ★ Widely used with good cross-browser support. Powers code.google.com and stackoverflow.com
+        and more...
+
+        ### CedPrettify
+
+        Simple and lightweight syntax highlighting of source code snippets using Google Code Prettify JavaScript library for Joomla.
+
+        You don't need to add additional markup to source code and neither to specify the language of source code snippets since prettify will guess. Code prettify extension for Joomla is compatible with WYSIWYG editors and includes several themes to customize the colors and styles of source code snippets.
+
+        Google Code Prettify JavaScript library supports all C-like (Java, PHP, C#, etc), Bash-like, and XML-like languages without need to specify the language and has customizable styles via CSS. Widely used with good cross-browser support.
+
+        ### Usage
+        Out of the box, Code prettify module for Joomla comes configured to automatically perform syntax highlighting of source code snippets in  or  tags on your Joomla pages. Automatic syntax highlighting mode is pretty simple, but powerful at the same time. Several settings can be configured at: Administration - Plugin - CedPrettify
+
+        CedPrettify includes several CSS styles publicly available which are used as themes for code Prettify
+
+        ### You're part of our marketing team!
+        At Galaxiis.com we receive feedback from our customers and consistently turn their comments and suggestions into new and improved features.
+
+        ### Satisfaction Guarantee
+        If you are not totally satisfied with our product or installation, we will promptly resolve any issues. In the event you are still not completely satisfied, we will refund your money.
+    </core_body>
+
+    <homepage_link>https://www.galaxiis.com/cedprettify-showcase/</homepage_link>
+    <download_link>https://www.galaxiis.com/cedprettify-download/</download_link>
+    <demo_link>https://www.galaxiis.com/cedprettify-demo/</demo_link>
+    <documentation_link>https://www.galaxiis.com/cedprettify-doc/</documentation_link>
+    <support_link>https://www.galaxiis.com/forums/</support_link>
+    <license_link>https://www.galaxiis.com/licence/</license_link>
+    <version>%%version%%</version>
+    <compatibility>
+        <version>30</version>
+    </compatibility>
+</jedupdate>
